@@ -1,0 +1,65 @@
+---
+title: 'ggtree: Elegant Graphics for phylogenetic tree visualization and annotation'
+author: 'Guangchuang Yu'
+knit: "bookdown::render_book"
+site: bookdown::bookdown_site
+output:
+  bookdown::pdf_book: 
+    dev: "cairo_pdf"
+    latex_engine: xelatex
+bibliography: references/ggtreerefs.bib
+biblio-style: apalike
+toc_unnumbered: yes
+fontsize: "12pt"
+mainfont: Times New Roman
+sansfont: Arial
+monofontoptions: "Scale=0.7"
+linestretch: 1.5
+toc-depth: 2
+link-citations: yes
+documentclass: book
+papersize: A4
+classoption: twoside
+highlight_bw: yes
+geometry: "left=37mm,right=37mm,top=27mm,bottom=27mm"
+---
+
+
+```{r pkgs, message=FALSE, warning=FALSE, echo=FALSE,}
+library(ape)
+library(Biostrings)
+library(cowplot)
+library(devtools)
+library(dplyr)
+library(ggimage)
+library(ggridges)
+library(ggrepel)
+library(ggstance)
+library(ggthemes)
+library(ggtree)
+library(kableExtra)
+library(OutbreakTools)
+library(phangorn)
+library(phyloseq)
+library(phytools)
+library(scales)
+library(seqcombo)
+library(seqmagick)
+library(stringr)
+library(tibble)
+library(tidyr)
+
+options(width=60)
+
+  
+if (knitr:::is_html_output()) {
+  options(knitr.table.format = "html") 
+  knitr::opts_chunk$set(cache=TRUE) 
+} else if (knitr:::is_latex_output()) {
+  options(knitr.table.format = "latex")
+  knitr::opts_chunk$set(fig.pos = '!h')
+} 
+
+theme_set(theme_grey())
+```
+
