@@ -1,5 +1,5 @@
 ---
-title: 'ggtree: Elegant Graphics for phylogenetic tree visualization and annotation'
+title: 'ggtree: Elegant Graphics for Phylogenetic Tree Visualization and Annotation'
 author: 'Guangchuang Yu'
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
@@ -54,7 +54,7 @@ options(width=60)
   
 if (knitr:::is_html_output()) {
   options(knitr.table.format = "html") 
-  knitr::opts_chunk$set(cache=TRUE) 
+  knitr::opts_chunk$set(cache=FALSE) 
 } else if (knitr:::is_latex_output()) {
   options(knitr.table.format = "latex")
   knitr::opts_chunk$set(fig.pos = '!h')

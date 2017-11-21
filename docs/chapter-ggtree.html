@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ggtree: Elegant Graphics for phylogenetic tree visualization and annotation</title>
+  <meta name="description" content="ggtree: Elegant Graphics for phylogenetic tree visualization and annotation">
+  <meta name="generator" content="bookdown 0.5.10 and GitBook 2.6.7">
+
+  <meta property="og:title" content="ggtree: Elegant Graphics for phylogenetic tree visualization and annotation" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="ggtree: Elegant Graphics for phylogenetic tree visualization and annotation" />
+  
+  
+  
+
+<meta name="author" content="Guangchuang Yu">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="chapter-treeio.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceLine, a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+div.sourceLine, a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource div.sourceLine, .numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource div.sourceLine::before, .numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; color: #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="short-introduction-to-r.html"><a href="short-introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Short introduction to R</a></li>
+<li class="chapter" data-level="2" data-path="short-introduction-to-ggplot2.html"><a href="short-introduction-to-ggplot2.html"><i class="fa fa-check"></i><b>2</b> Short introduction to ggplot2</a></li>
+<li class="chapter" data-level="3" data-path="chapter-treeio.html"><a href="chapter-treeio.html"><i class="fa fa-check"></i><b>3</b> Parsing phylogenetic trees with associated data: <em>treeio</em></a><ul>
+<li class="chapter" data-level="3.1" data-path="chapter-treeio.html"><a href="chapter-treeio.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="chapter-treeio.html"><a href="chapter-treeio.html#newick-tree-format"><i class="fa fa-check"></i><b>3.1.1</b> Newick tree format</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chapter-treeio.html"><a href="chapter-treeio.html#nexus-tree-format"><i class="fa fa-check"></i><b>3.1.2</b> NEXUS tree format</a></li>
+<li class="chapter" data-level="3.1.3" data-path="chapter-treeio.html"><a href="chapter-treeio.html#nhxtext"><i class="fa fa-check"></i><b>3.1.3</b> New Hampshire eXtended format</a></li>
+<li class="chapter" data-level="3.1.4" data-path="chapter-treeio.html"><a href="chapter-treeio.html#jplace-format"><i class="fa fa-check"></i><b>3.1.4</b> Jplace format</a></li>
+<li class="chapter" data-level="3.1.5" data-path="chapter-treeio.html"><a href="chapter-treeio.html#software-outputs"><i class="fa fa-check"></i><b>3.1.5</b> Software outputs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chapter-treeio.html"><a href="chapter-treeio.html#methods-and-materials"><i class="fa fa-check"></i><b>3.2</b> Methods and Materials</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-treeio.html"><a href="chapter-treeio.html#results"><i class="fa fa-check"></i><b>3.3</b> Results</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chapter-treeio.html"><a href="chapter-treeio.html#features-of-treeio"><i class="fa fa-check"></i><b>3.3.1</b> Features of <em>treeio</em></a></li>
+<li class="chapter" data-level="3.3.2" data-path="chapter-treeio.html"><a href="chapter-treeio.html#functions-demonstrated"><i class="fa fa-check"></i><b>3.3.2</b> Functions demonstrated</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chapter-treeio.html"><a href="chapter-treeio.html#cv"><i class="fa fa-check"></i><b>3.3.3</b> Data integration and comparison</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chapter-treeio.html"><a href="chapter-treeio.html#discussion"><i class="fa fa-check"></i><b>3.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html"><i class="fa fa-check"></i><b>4</b> Visualization and annotation of phylogenetic trees: <em>ggtree</em></a><ul>
+<li class="chapter" data-level="4.1" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#methods-and-materials-1"><i class="fa fa-check"></i><b>4.2</b> Methods and Materials</a></li>
+<li class="chapter" data-level="4.3" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#results-1"><i class="fa fa-check"></i><b>4.3</b> Results</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#features"><i class="fa fa-check"></i><b>4.3.1</b> Features</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#layouts-of-phylogenetic-tree"><i class="fa fa-check"></i><b>4.3.2</b> Layouts of phylogenetic tree</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#layer"><i class="fa fa-check"></i><b>4.3.3</b> Annotation layers</a></li>
+<li class="chapter" data-level="4.3.4" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#treeman"><i class="fa fa-check"></i><b>4.3.4</b> Tree manipulation</a></li>
+<li class="chapter" data-level="4.3.5" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#tree-annotation-using-data-from-evolutionary-analysis-software"><i class="fa fa-check"></i><b>4.3.5</b> Tree annotation using data from evolutionary analysis software</a></li>
+<li class="chapter" data-level="4.3.6" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#tree-annotation-based-on-tree-classes-defined-in-other-r-packages"><i class="fa fa-check"></i><b>4.3.6</b> Tree annotation based on tree classes defined in other R packages</a></li>
+<li class="chapter" data-level="4.3.7" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#advanced-annotation-on-the-phylogenetic-tree"><i class="fa fa-check"></i><b>4.3.7</b> Advanced annotation on the phylogenetic tree</a></li>
+<li class="chapter" data-level="4.3.8" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#performance-comparison-with-other-tree-related-packages"><i class="fa fa-check"></i><b>4.3.8</b> Performance comparison with other tree-related packages</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#discussion-1"><i class="fa fa-check"></i><b>4.4</b> Discussion</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ggtree: Elegant Graphics for phylogenetic tree visualization and annotation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter-ggtree" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Visualization and annotation of phylogenetic trees: <em>ggtree</em></h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<p>There are many software packages and webtools that are designed for displaying phylogenetic trees, such as <em>TreeView</em> <span class="citation">(Page <a href="#ref-page_visualizing_2002">2002</a>)</span>, <em>FigTree</em><a href="chapter-ggtree.html#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>, <em>TreeDyn</em> <span class="citation">(Chevenet et al. <a href="#ref-chevenet_treedyn:_2006">2006</a>)</span>, <em>Dendroscope</em> <span class="citation">(Huson and Scornavacca <a href="#ref-huson_dendroscope_2012">2012</a>)</span>, <em>EvolView</em> <span class="citation">(Z. He et al. <a href="#ref-he_evolview_2016">2016</a>)</span> and <em>iTOL</em> <span class="citation">(Letunic and Bork <a href="#ref-letunic_interactive_2007">2007</a>)</span>, <em>etc.</em>. Only several of them, such as <em>FigTree</em>, <em>TreeDyn</em> and <em>iTOL</em>, allow users to annotate the trees with coloring branches, highlighted clades and tree features. However, their pre-defined annotating functions are usually limited to some specific phylogenetic data. As phylogenetic trees become more widely used in multidisciplinary studies, there is an increasing need to incorporate various types of the phylogenetic covariates and other associated data from different sources into the trees for visualizations and further analyses. For instance, influenza virus has a wide host range, diverse and dynamic genotypes and characteristic transmission behaviors that are mostly associated with the virus evolution and essentially among themselves. Therefore, in addition to standalone applications that focus on each of the specific analysis and data type, researchers studying molecular evolution need a robust and programmable platform that allows the high levels integration and visualization of many of these different aspects of data (raw or from other primary analyses) over the phylogenetic trees to identify their associations and patterns.</p>
+<p>To fill this gap, we developed <em>ggtree</em>, a package for the R programming language <span class="citation">(R Core Team <a href="#ref-rstats">2016</a>)</span> released under the Bioconductor project <span class="citation">(Gentleman et al. <a href="#ref-gentleman_bioconductor_2004">2004</a>)</span>. The <em>ggtree</em> is built to work with phylogenetic data object generated by <a href="chapter-treeio.html#chapter-treeio"><em>treeio</em></a>, and display tree graphics with <em>ggplot2</em> package <span class="citation">(Wickham <a href="#ref-wickham_ggplot2_2016">2016</a>)</span> that was based on the grammar of graphics <span class="citation">(Wilkinson et al. <a href="#ref-wilkinson_grammar_2005">2005</a>)</span>.</p>
+<p>The R language is increasingly being used in phylogenetics. However, a comprehensive package, designed for viewing and annotating phylogenetic trees, particularly with complex data integration, is not yet available. Most of the R packages in phylogenetics focus on specific statistical analyses rather than viewing and annotating the trees with more generalized phylogeny-associated data. Some packages, including <em>ape</em> <span class="citation">(Paradis, Claude, and Strimmer <a href="#ref-paradis_ape_2004">2004</a>)</span> and <em>phytools</em> <span class="citation">(Revell <a href="#ref-revell_phytools_2012">2012</a>)</span>, which are capable of displaying and annotating trees, are developed using the base graphics system of R. In particular, <em>ape</em> is one of the fundamental package for phylogenetic analysis and data processing. However, the base graphics system is relatively difficult to extend and limits the complexity of tree figure to be displayed. <em>OutbreakTools</em> <span class="citation">(Jombart et al. <a href="#ref-jombart_outbreaktools_2014">2014</a>)</span> and <em>phyloseq</em> <span class="citation">(McMurdie and Holmes <a href="#ref-mcmurdie_phyloseq_2013">2013</a>)</span> extended <em>ggplot2</em> to plot phylogenetic trees. The <em>ggplot2</em> system of graphics allows rapid customization and exploration of design solutions. However these packages were designed for epidemiology and microbiome data respectively and did not aim to provide a general solution for tree visualization and annotation. The <em>ggtree</em> package also inherits versatile properties of <em>ggplot2</em>, and more importantly allows constructing complex tree figures by freely combining multiple layers of annotations using the tree associated data imported from different sources (importation using <em>treeio</em> package is detailed in <a href="chapter-treeio.html#chapter-treeio">Chapter 2</a>).</p>
+</div>
+<div id="methods-and-materials-1" class="section level2">
+<h2><span class="header-section-number">4.2</span> Methods and Materials</h2>
+<!-- ### Implementation -->
+<p>The <em>ggtree</em> package is designed for annotating phylogenetic trees with their associated data of different types and from various sources. These data could come from users or analysis programs, and might include evolutionary rates, ancestral sequences, <em>etc.</em> that are associated with the taxa from real samples, or with the internal nodes representing hypothetic ancestor strain/species, or with the tree branches indicating evolutionary time courses. For instance, the data could be the geographic positions of the sampled avian influenza viruses (informed by the survey locations) and the ancestral nodes (by phylogeographic inference) in the viral gene tree <span class="citation">(Lam et al. <a href="#ref-lam_phylodynamics_2012">2012</a>)</span>.</p>
+<p>The <em>ggtree</em> supports <em>ggplot2</em>’s graphical language, which allows high level of customization, is intuitive and flexible. It is notable that <em>ggplot2</em> itself does not provide low-level geometric objects or other support for tree-like structures, and hence <em>ggtree</em> is a useful extension on that regard. Even though the other two phylogenetics-related R packages, <em>OutbreakTools</em> and <em>phyloseq</em>, are developed based on <em>ggplot2</em>, the most valuable part of <em>ggplot2</em> syntax - adding layers of annotations - is not supported in these packages. For example, if we have plotted a tree without taxa labels, <em>OutbreakTools</em> and <em>phyloseq</em> provide no easy way for general <code>R</code> users, who have little knowledge about the infrastructures of these packages, to add a layer of taxa labels. The <em>ggtree</em> extends <em>ggplot2</em> to support tree objects by implementing a geometric layer, <code>geom_tree</code>, to support visualizing tree structure. In <em>ggtree</em>, viewing a phylogenetic tree is relatively easy, via the command <code>ggplot(tree_object) + geom_tree() + theme_tree()</code> or <code>ggtree(tree_object)</code> for short. Layers of annotations can be added one by one via the <code>+</code> operator. To facilitate tree visualization, <em>ggtree</em> provides several geometric layers, including <code>geom_treescale</code> for adding legend of tree branch scale (genetic distance, divergence time, <em>etc.</em>), <code>geom_range</code> for displaying uncertainty of branch lengths (confidence interval or range, <em>etc.</em>), <code>geom_tiplab</code> for adding taxa label, <code>geom_tipoint</code> and <code>geom_nodepoint</code> for adding symbols of tips and internal nodes, <code>geom_hilight</code> for highlighting a clade with rectangle, and <code>geom_cladelabel</code> for annotating a selected clade with a bar and text label, <em>etc.</em>. A full list of geometric layers provided by <em>ggtree</em> are summarized in Table <a href="chapter-ggtree.html#tab:geoms">4.1</a>.</p>
+</div>
+<div id="results-1" class="section level2">
+<h2><span class="header-section-number">4.3</span> Results</h2>
+<div id="features" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Features</h3>
+<p>The <em>ggtree</em> supports displaying <code>phylogram</code> and <code>cladogram</code> (Figure <a href="#fig:layout"><strong>??</strong></a>) and can visualize a tree with different layouts, including <code>rectangular</code>, <code>slanted</code>, <code>circular</code>, <code>fan</code>, <code>unrooted</code>, <code>time-scale</code> and <code>two-dimensional</code> tree.</p>
+<p>The <em>ggtree</em> allows tree covariates stored in tree object to be used directly in tree visualization and annotation. These covariates can be meta data of the sampling species/sequences used in the tree, statistical analysis or evolutionary inferences of the tree (<em>e.g.</em> divergence time inferred by <em>BEAST</em> or ancestral sequences inferred by <em>HyPhy</em>, <em>etc.</em>). These numerical or categorical data can be used to color branches or nodes of the tree, displayed on the tree with original values or mapping to different symbols. In <em>ggtree</em>, users can add layers to highlight the selected clades, and to label clades or annotate the tree with symbols of different shapes and colors, <em>etc.</em> (more details in <a href="chapter-ggtree.html#layer">Section 3.3.3</a>).</p>
+<p>Comparing to other phylogenetic tree visualizing packages, <em>ggtree</em> excels at exploring the tree structure and related data visually. For example, a complex tree figure with several annotation layers can be transferred to a new tree object without step-by-step re-creation. An operator, <code>%&lt;%</code>, was created for such operation - to update a tree figure with a new tree object. Branch length can be re-scaled using other numerical variable (as shown in Figure <a href="#fig:rescale"><strong>??</strong></a> which rescales the tree branches using <em>d<sub>N</sub></em> value). Phylogenetic trees can be visually manipulated by collapsing, scaling and rotating clade. Circular and fan layout tree can be rotated by specific angle. Trees structures can be transformed from one layout to another.</p>
+<p>The <code>groupClade</code> function assigns the branches and nodes under different clades into different groups. Similarly, <code>groupOTU</code> function assigns branches and nodes to different groups based on user-specified groups of operational taxonomic units (OTUs) that are not necessarily within a clade, but can be monophyletic (clade), polyphyletic or paraphyletic. A phylogenetic tree can be annotated by mapping different line type, size, color or shape to the branches or nodes that have been assigned to different groups.</p>
+<p><a href="chapter-treeio.html#chapter-treeio"><em>Treeio</em></a> package parses diverse annotation data from different software outputs into <code>S4</code> phylogenetic data objects. The <em>ggtree</em> mainly utilizes these <code>S4</code> objects to display and annotate the tree. There are also other R packages that defined <code>S3</code>/<code>S4</code> classes to store phylogenetic trees with their specific associated data, including <code>phylo4</code> and <code>phylo4d</code> defined in <em>phylobase</em> package, <code>obkdata</code> defined in <em>OutbreakTools</em> package, and <code>phyloseq</code> defined in <em>phyloseq</em> package. All these tree objects are also supported in <em>ggtree</em> and their specific annotation data can be used to annotate the tree in <em>ggtree</em>. Such compatibility of <em>ggtree</em> facilitates the integration of data and analysis results.</p>
+<!--
+### TODO
+
+1. Maybe another session to highlight performance of visualizing large tree and have a session in Appendix for performance comparison.
+
+
+2. ggtree with other related packages. e.g. ggtree+ggbio for tree with genomic feature, ggtree+[ggseqlogo](https://github.com/omarwagih/ggseqlogo) for tree with sequence logo (motif).
+
+Example: https://www.researchgate.net/publication/38022768_Bayesian_Modeling_of_the_Yeast_SH3_Domain_Interactome_Predicts_Spatiotemporal_Dynamics_of_Endocytosis_Proteins/figures?lo=1, but I prefer to find influenza data to present
+
+-->
+</div>
+<div id="layouts-of-phylogenetic-tree" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Layouts of phylogenetic tree</h3>
+<p>Viewing phylogenetic with ggtree is quite simple, just pass the tree object to <em>ggtree</em> function. We have developed several types of layouts for tree presentation (Figure <a href="#fig:layout"><strong>??</strong></a>), including rectangular (by default), slanted, circular, fan, unrooted (equal angle and daylight methods), time-scaled and 2-dimensional layouts.</p>
+<p>Here are examples of visualizing a tree with different layouts:</p>
+
+<pre class="sourceCode r" id="cb41"><code class="sourceCode r"><div class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">library</span>(ggtree)</div>
+<div class="sourceLine" id="cb41-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">2017-02-16</span>)</div>
+<div class="sourceLine" id="cb41-3" data-line-number="3">tree &lt;-<span class="st"> </span><span class="kw">rtree</span>(<span class="dv">50</span>)</div>
+<div class="sourceLine" id="cb41-4" data-line-number="4"><span class="kw">ggtree</span>(tree)</div>
+<div class="sourceLine" id="cb41-5" data-line-number="5"><span class="kw">ggtree</span>(tree, <span class="dt">layout=</span><span class="st">&quot;slanted&quot;</span>) </div>
+<div class="sourceLine" id="cb41-6" data-line-number="6"><span class="kw">ggtree</span>(tree, <span class="dt">layout=</span><span class="st">&quot;circular&quot;</span>)</div>
+<div class="sourceLine" id="cb41-7" data-line-number="7"><span class="kw">ggtree</span>(tree, <span class="dt">layout=</span><span class="st">&quot;fan&quot;</span>, <span class="dt">open.angle=</span><span class="dv">120</span>)</div>
+<div class="sourceLine" id="cb41-8" data-line-number="8"><span class="kw">ggtree</span>(tree, <span class="dt">layout=</span><span class="st">&quot;equal_angle&quot;</span>)</div>
+<div class="sourceLine" id="cb41-9" data-line-number="9"><span class="kw">ggtree</span>(tree, <span class="dt">layout=</span><span class="st">&quot;daylight&quot;</span>)</div>
+<div class="sourceLine" id="cb41-10" data-line-number="10"><span class="kw">ggtree</span>(tree, <span class="dt">branch.length=</span><span class="st">&#39;none&#39;</span>)</div>
+<div class="sourceLine" id="cb41-11" data-line-number="11"><span class="kw">ggtree</span>(tree, <span class="dt">branch.length=</span><span class="st">&#39;none&#39;</span>, <span class="dt">layout=</span><span class="st">&#39;circular&#39;</span>)</div>
+<div class="sourceLine" id="cb41-12" data-line-number="12"><span class="kw">ggtree</span>(tree, <span class="dt">layout=</span><span class="st">&quot;daylight&quot;</span>, <span class="dt">branch.length =</span> <span class="st">&#39;none&#39;</span>)</div></code></pre>
+
+
+
+<p><img src="ggtree-book_files/figure-html4/layout-1.png" title="<strong>Tree layouts.</strong> Phylogram: rectangular layout (A), slanted layout (B), circular layout (C) and fan layout (D). Unrooted: equal-angle method (E) and daylight method (F). Cladogram: rectangular layout (G), circular layout (H) and unrooted layout (I). Slanted and fan layouts for cladogram are also supported." alt="<strong>Tree layouts.</strong> Phylogram: rectangular layout (A), slanted layout (B), circular layout (C) and fan layout (D). Unrooted: equal-angle method (E) and daylight method (F). Cladogram: rectangular layout (G), circular layout (H) and unrooted layout (I). Slanted and fan layouts for cladogram are also supported." width="768"  /></p>
+<p><strong>Phylogram.</strong> Layouts of <em>rectangular</em>, <em>slanted</em>, <em>circular</em> and <em>fan</em> are supported to visualize phylogram (by default, with branch length scaled) as demonstrated in Figure <a href="#fig:layout"><strong>??</strong></a>A, B, C and D.</p>
+<p><strong>Unrooted layout.</strong> Unrooted (also called ‘radial’) layout is supported by equal-angle and daylight algorithms, user can specify unrooted layout algorithm by passing “equal_angle” or “daylight” to <code>layout</code> parameter to visualize the tree. Equal-angle method was proposed by Christopher Meacham in <em>PLOTREE</em>, which was incorporated in <em>PHYLIP</em> <span class="citation">(Retief <a href="#ref-retief_phylogenetic_2000">2000</a>)</span>. This method starts from the root of the tree and allocates arcs of angle to each subtrees proportional to the number of tips in it. It iterates from root to tips and subdivides the angle allocated to a subtree into angles for its dependent subtrees. This method is fast and was implemented in many software packages. As shown in Figure <a href="#fig:layout"><strong>??</strong></a>E, equal angle method has a drawback that tips are tend to be clustered together and leaving many spaces unused. The daylight method starts from an initial tree built by equal angle and iteratively improves it by successively going to each interior node and swinging subtrees so that the arcs of “daylight” are equal (Figure <a href="#fig:layout"><strong>??</strong></a>F). This method was firstly implemented in <em>PAUP*</em> <span class="citation">(Wilgenbusch and Swofford <a href="#ref-wilgenbusch_inferring_2003">2003</a>)</span>.</p>
+<p><strong>Cladogram.</strong> To visualize cladogram that without branch length scaling and only display the tree structure, <code>branch.length</code> is set to “none” and it works for all types of layouts (Figure <a href="#fig:layout"><strong>??</strong></a>G, H and I).</p>
+<p><strong>Time-scaled layout.</strong> For time-scaled tree, the most recent sampling date must be specified via the <code>mrsd</code> parameter and <em>ggtree</em> will scaled the tree by sampling (tip) and divergence (internal node) time, and a time scale axis will be displayed under the tree by default.</p>
+
+
+
+<pre class="sourceCode r" id="cb42"><code class="sourceCode r"><div class="sourceLine" id="cb42-1" data-line-number="1">beast_file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;examples/MCC_FluA_H3.tree&quot;</span>, </div>
+<div class="sourceLine" id="cb42-2" data-line-number="2">                          <span class="dt">package=</span><span class="st">&quot;ggtree&quot;</span>)</div>
+<div class="sourceLine" id="cb42-3" data-line-number="3">beast_tree &lt;-<span class="st"> </span><span class="kw">read.beast</span>(beast_file)</div>
+<div class="sourceLine" id="cb42-4" data-line-number="4"><span class="kw">ggtree</span>(beast_tree, <span class="dt">mrsd=</span><span class="st">&quot;2013-01-01&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_tree2</span>()</div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/timescaled-1.png" title="<strong>Time-scaled layout.</strong> The <em>x-axis</em> is the timescale (in units of year). The divergence time was inferred by <em>BEAST</em> using molecular clock model." alt="<strong>Time-scaled layout.</strong> The <em>x-axis</em> is the timescale (in units of year). The divergence time was inferred by <em>BEAST</em> using molecular clock model." width="672"  /> </p>
+<p><strong>Two-dimensional tree layout.</strong> A two-dimensional tree is a projection of the phylogenetic tree in a space defined by the associated phenotype (numerical or categorical trait, on the <em>y</em>-axis) and tree branch scale (<em>e.g.</em>, evolutionary distance, divergent time, on the <em>x</em>-axis). The phenotype can be a measure of certain biological characteristics of the taxa and hypothetical ancestors in the tree. This is a new layout we proposed in <em>ggtree</em>, which is useful to track the virus phenotypes or other behaviors (<em>y</em>-axis) changing with the virus evolution (<em>x</em>-axis). In fact, the analysis of phenotypes or genotypes over evolutionary time have been widely used for study influenza virus evolution <span class="citation">(Neher et al. <a href="#ref-neher_prediction_2016">2016</a>)</span>, though such analysis diagrams are not tree-like, <em>i.e.</em>, no connection between data points, unlike our two-dimensional tree layout that connect data points with the corresponding tree branches. Therefore, this new layout we provided will make such data analysis easier and more scalable for large sequence data sets of influenza viruses.</p>
+<p>In this example, we used the previous time-scaled tree of H3 human and swine influenza viruses (Figure <a href="#fig:timescaled"><strong>??</strong></a>; data published in <span class="citation">(Liang et al. <a href="#ref-liang_expansion_2014">2014</a>)</span>) and scaled the <em>y</em>-axis based on the predicted <em>N</em>-linked glycosylation sites (NLG) for each of the taxon and ancestral sequences of hemagglutinin proteins. The NLG sites were predicted using <em>NetNGlyc</em> 1.0 Server<a href="chapter-ggtree.html#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. To scaled the <em>y</em>-axis, the parameter <code>yscale</code> in the <code>ggtree()</code> function is set to a numerical or categorical variable. If <code>yscale</code> is a categorical variable as in this example, users should specify how the categories are to be mapped to numerical values via the <code>yscale_mapping</code> variables.</p>
+
+
+
+<pre class="sourceCode r" id="cb43"><code class="sourceCode r"><div class="sourceLine" id="cb43-1" data-line-number="1">NAG_file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;examples/NAG_inHA1.txt&quot;</span>, <span class="dt">package=</span><span class="st">&quot;ggtree&quot;</span>)</div>
+<div class="sourceLine" id="cb43-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb43-3" data-line-number="3">NAG.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(NAG_file, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">header=</span><span class="ot">FALSE</span>, </div>
+<div class="sourceLine" id="cb43-4" data-line-number="4">                     <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</div>
+<div class="sourceLine" id="cb43-5" data-line-number="5">NAG &lt;-<span class="st"> </span>NAG.df[,<span class="dv">2</span>]</div>
+<div class="sourceLine" id="cb43-6" data-line-number="6"><span class="kw">names</span>(NAG) &lt;-<span class="st"> </span>NAG.df[,<span class="dv">1</span>]</div>
+<div class="sourceLine" id="cb43-7" data-line-number="7"></div>
+<div class="sourceLine" id="cb43-8" data-line-number="8">## separate the tree by host species</div>
+<div class="sourceLine" id="cb43-9" data-line-number="9">tip &lt;-<span class="st"> </span><span class="kw">get.tree</span>(beast_tree)<span class="op">$</span>tip.label</div>
+<div class="sourceLine" id="cb43-10" data-line-number="10">beast_tree &lt;-<span class="st"> </span><span class="kw">groupOTU</span>(beast_tree, tip[<span class="kw">grep</span>(<span class="st">&quot;Swine&quot;</span>, tip)], </div>
+<div class="sourceLine" id="cb43-11" data-line-number="11">                       <span class="dt">group_name =</span> <span class="st">&quot;host&quot;</span>)</div>
+<div class="sourceLine" id="cb43-12" data-line-number="12"></div>
+<div class="sourceLine" id="cb43-13" data-line-number="13">p &lt;-<span class="st"> </span><span class="kw">ggtree</span>(beast_tree, <span class="kw">aes</span>(<span class="dt">color=</span>host), <span class="dt">mrsd=</span><span class="st">&quot;2013-01-01&quot;</span>, </div>
+<div class="sourceLine" id="cb43-14" data-line-number="14">            <span class="dt">yscale =</span> <span class="st">&quot;label&quot;</span>, <span class="dt">yscale_mapping =</span> NAG) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb43-15" data-line-number="15"><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&#39;none&#39;</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb43-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), </div>
+<div class="sourceLine" id="cb43-17" data-line-number="17">                     <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;human&quot;</span>, <span class="st">&quot;swine&quot;</span>)) <span class="op">+</span></div>
+<div class="sourceLine" id="cb43-18" data-line-number="18"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Number of predicted N-linked glycoslyation sites&quot;</span>)</div>
+<div class="sourceLine" id="cb43-19" data-line-number="19"></div>
+<div class="sourceLine" id="cb43-20" data-line-number="20">## (optional) add more annotations to help interpretation</div>
+<div class="sourceLine" id="cb43-21" data-line-number="21">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_nodepoint</span>(<span class="dt">color=</span><span class="st">&quot;grey&quot;</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span>.<span class="dv">8</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb43-22" data-line-number="22"><span class="st">  </span><span class="kw">geom_rootpoint</span>(<span class="dt">color=</span><span class="st">&quot;black&quot;</span>, <span class="dt">size=</span><span class="dv">3</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb43-23" data-line-number="23"><span class="st">  </span><span class="kw">geom_tippoint</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb43-24" data-line-number="24"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;point&quot;</span>, <span class="dv">1992</span>, <span class="fl">5.6</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">color=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb43-25" data-line-number="25"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;point&quot;</span>, <span class="dv">1992</span>, <span class="fl">5.4</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">color=</span><span class="st">&quot;grey&quot;</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb43-26" data-line-number="26"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;point&quot;</span>, <span class="fl">1991.6</span>, <span class="fl">5.2</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb43-27" data-line-number="27"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;point&quot;</span>, <span class="dv">1992</span>, <span class="fl">5.2</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb43-28" data-line-number="28"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="fl">1992.3</span>, <span class="fl">5.6</span>, <span class="dt">hjust=</span><span class="dv">0</span>, <span class="dt">size=</span><span class="dv">4</span>, <span class="dt">label=</span><span class="st">&quot;Root node&quot;</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb43-29" data-line-number="29"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="fl">1992.3</span>, <span class="fl">5.4</span>, <span class="dt">hjust=</span><span class="dv">0</span>, <span class="dt">size=</span><span class="dv">4</span>, </div>
+<div class="sourceLine" id="cb43-30" data-line-number="30">           <span class="dt">label=</span><span class="st">&quot;Internal nodes&quot;</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb43-31" data-line-number="31"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="fl">1992.3</span>, <span class="fl">5.2</span>, <span class="dt">hjust=</span><span class="dv">0</span>, <span class="dt">size=</span><span class="dv">4</span>,</div>
+<div class="sourceLine" id="cb43-32" data-line-number="32">           <span class="dt">label=</span><span class="st">&quot;Tip nodes (blue: human; red: swine)&quot;</span>)</div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/2d-1.png" title="<strong>Two-dimensional tree layout.</strong> The trunk and other branches highlighted in red (for swine) and blue (for human). The <em>x</em>-axis is scaled to the branch length (in units of year) of the time-scaled tree. The <em>y</em>-axis is scaled to the node attribute variable, in this case the number of predicted <em>N</em>-linked glycosylation site (NLG) on the hemagglutinin protein. Colored circles indicate the different types of tree nodes. Note that nodes assigned the same <em>x</em>- (temporal) and <em>y</em>- (NLG) coordinates are superimposed in this representation and appear as one node, which is shaded based on the colors of all the nodes at that point." alt="<strong>Two-dimensional tree layout.</strong> The trunk and other branches highlighted in red (for swine) and blue (for human). The <em>x</em>-axis is scaled to the branch length (in units of year) of the time-scaled tree. The <em>y</em>-axis is scaled to the node attribute variable, in this case the number of predicted <em>N</em>-linked glycosylation site (NLG) on the hemagglutinin protein. Colored circles indicate the different types of tree nodes. Note that nodes assigned the same <em>x</em>- (temporal) and <em>y</em>- (NLG) coordinates are superimposed in this representation and appear as one node, which is shaded based on the colors of all the nodes at that point." width="816"  /> </p>
+<p>As shown in Figure <a href="#fig:2d"><strong>??</strong></a>, two-dimensional tree good at visualizing the change of phenotype over the evolution in the phylogenetic tree. In this example, it is shown that H3 gene of human influenza A virus maintained high level of <em>N</em>-linked glycosylation sites (n=8 to 9) over last two decades and dropped significantly to 5 or 6 in a separate viral lineage transmitted to swine populations and established there. It was indeed hypothesized that the human influenza virus with high level of glycosylation on the viral hemagglutinin protein provides better shielding effect to protect the antigenic sites from exposure to the herd immunity, and thus has selective advantage in human populations that maintain high level of herd immunity against the circulating human influenza virus strains. For the viral lineage that newly jumped across the species barrier and transmitted to swine population, the shielding effect of the high-level surface glycan oppositely impose selective disadvantage because the receptor-binding domain may also be shielded which greatly affect the viral fitness of the lineage that newly adapted to a new host species.</p>
+</div>
+<div id="layer" class="section level3">
+<h3><span class="header-section-number">4.3.3</span> Annotation layers</h3>
+<p>The <em>ggtree</em> is designed for more general purpose or specific type of tree visualization and annotation. It supports grammar of graphics implemented in <em>ggplot2</em> and users can freely visualize/annotate a tree by combining several annotation layers.</p>
+
+
+
+<pre class="sourceCode r" id="cb44"><code class="sourceCode r"><div class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">library</span>(ggtree)</div>
+<div class="sourceLine" id="cb44-2" data-line-number="2">treetext =<span class="st"> &quot;(((ADH2:0.1[&amp;&amp;NHX:S=human], ADH1:0.11[&amp;&amp;NHX:S=human]):</span></div>
+<div class="sourceLine" id="cb44-3" data-line-number="3"><span class="st">0.05 [&amp;&amp;NHX:S=primates:D=Y:B=100],ADHY:</span></div>
+<div class="sourceLine" id="cb44-4" data-line-number="4"><span class="st">0.1[&amp;&amp;NHX:S=nematode],ADHX:0.12 [&amp;&amp;NHX:S=insect]):</span></div>
+<div class="sourceLine" id="cb44-5" data-line-number="5"><span class="st">0.1[&amp;&amp;NHX:S=metazoa:D=N],(ADH4:0.09[&amp;&amp;NHX:S=yeast],</span></div>
+<div class="sourceLine" id="cb44-6" data-line-number="6"><span class="st">ADH3:0.13[&amp;&amp;NHX:S=yeast], ADH2:0.12[&amp;&amp;NHX:S=yeast],</span></div>
+<div class="sourceLine" id="cb44-7" data-line-number="7"><span class="st">ADH1:0.11[&amp;&amp;NHX:S=yeast]):0.1[&amp;&amp;NHX:S=Fungi])[&amp;&amp;NHX:D=N];&quot;</span></div>
+<div class="sourceLine" id="cb44-8" data-line-number="8">tree &lt;-<span class="st"> </span><span class="kw">read.nhx</span>(<span class="kw">textConnection</span>(treetext))</div>
+<div class="sourceLine" id="cb44-9" data-line-number="9"><span class="kw">ggtree</span>(tree) <span class="op">+</span><span class="st"> </span><span class="kw">geom_tiplab</span>() <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb44-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_label</span>(<span class="kw">aes</span>(<span class="dt">x=</span>branch, <span class="dt">label=</span>S), <span class="dt">fill=</span><span class="st">&#39;lightgreen&#39;</span>) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb44-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_label</span>(<span class="kw">aes</span>(<span class="dt">label=</span>D), <span class="dt">fill=</span><span class="st">&#39;steelblue&#39;</span>) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb44-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>B), <span class="dt">hjust=</span><span class="op">-</span>.<span class="dv">5</span>)</div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/ggtreeNHX-1.png" title="<strong>Annotating tree using grammar of graphics.</strong> The NHX tree was annotated using grammar of graphic syntax by combining different layers using <code>+</code> operator. Species information were labelled on the middle of the branches, Duplication events were shown on most recent common ancestor and clade bootstrap value were dispalyed near to it." alt="<strong>Annotating tree using grammar of graphics.</strong> The NHX tree was annotated using grammar of graphic syntax by combining different layers using <code>+</code> operator. Species information were labelled on the middle of the branches, Duplication events were shown on most recent common ancestor and clade bootstrap value were dispalyed near to it." width="672"  /> </p>
+<p>Here, as an example, we visualized the tree with several layers to display annotation stored in NHX tags, including a layer of <code>geom_tiplab</code> to display tip labels (gene name in this case), a layer using <code>geom_label</code> to show species information (<code>S</code> tag) colored by lightgreen, a layer of duplication event information (<code>D</code> tag) colored by steelblue and another layer using <em>geom_text</em> to show bootstrap value (<code>B</code> tag).</p>
+<p>Layers defined in <em>ggplot2</em> can be applied to <em>ggtree</em> directly as demonstrated in Figure <a href="#fig:ggtreeNHX"><strong>??</strong></a> of using <em>geom_label</em> and <em>geom_text</em>. But <em>ggplot2</em> does not provide graphic layers that are specific designed for phylogenetic tree annotation. For instance, layers for tip labels, tree branch scale legend, highlight or labeling clade are all unavailable. To make tree annotation more flexible, a number of layers have been implemented in <em>ggtree</em> (Table <a href="chapter-ggtree.html#tab:geoms">4.1</a>), enabling different ways of annotation on various parts/components of a phylogenetic tree.</p>
+<table>
+<caption><span id="tab:geoms">Table 4.1: </span>Geom layers defined in ggtree.</caption>
+<thead>
+<tr class="header">
+<th align="left">Layer</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">geom_balance</td>
+<td align="left">highlights the two direct descendant clades of an internal node</td>
+</tr>
+<tr class="even">
+<td align="left">geom_cladelabel</td>
+<td align="left">annotate a clade with bar and text label</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_hilight</td>
+<td align="left">highlight a clade with rectangle</td>
+</tr>
+<tr class="even">
+<td align="left">geom_label2</td>
+<td align="left">modified version of geom_label, with subsetting supported</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_nodepoint</td>
+<td align="left">annotate internal nodes with symbolic points</td>
+</tr>
+<tr class="even">
+<td align="left">geom_point2</td>
+<td align="left">modified version of geom_point, with subsetting supported</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_range</td>
+<td align="left">bar layer to present uncertainty of evolutionary inference</td>
+</tr>
+<tr class="even">
+<td align="left">geom_rootpoint</td>
+<td align="left">annotate root node with symbolic point</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_segment2</td>
+<td align="left">modified version of geom_segment, with subsetting supported</td>
+</tr>
+<tr class="even">
+<td align="left">geom_strip</td>
+<td align="left">annotate associated taxa with bar and (optional) text label</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_taxalink</td>
+<td align="left">associate two related taxa by linking them with a curve</td>
+</tr>
+<tr class="even">
+<td align="left">geom_text2</td>
+<td align="left">modified version of geom_text, with subsetting supported</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_tiplab</td>
+<td align="left">layer of tip labels</td>
+</tr>
+<tr class="even">
+<td align="left">geom_tiplab2</td>
+<td align="left">layer of tip labels for circular layout</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_tippoint</td>
+<td align="left">annotate external nodes with symbolic points</td>
+</tr>
+<tr class="even">
+<td align="left">geom_tree</td>
+<td align="left">tree structure layer, with multiple layout supported</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_treescale</td>
+<td align="left">tree branch scale legend</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="treeman" class="section level3">
+<h3><span class="header-section-number">4.3.4</span> Tree manipulation</h3>
+<p>The <em>ggtree</em> supports many ways of manipulating the tree visually, including viewing selected clade to explore large tree (Figure <a href="#fig:viewClade"><strong>??</strong></a>), taxa clustering (Figure <a href="#fig:groupOTU"><strong>??</strong></a>), rotating clade or tree (Figure <a href="#fig:rfClade"><strong>??</strong></a>B and <a href="#fig:rotateTree"><strong>??</strong></a>), zoom out or collapsing clades (Figure <a href="#fig:collapseExpand"><strong>??</strong></a>A and <a href="#fig:scaleClade"><strong>??</strong></a>), <em>etc.</em>. Details tree manipulation functions are summarized in Table <a href="chapter-ggtree.html#tab:treeman">4.2</a>.</p>
+<table>
+<caption><span id="tab:treeman">Table 4.2: </span>Tree manipulation functions.</caption>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Descriptiotn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">collapse</td>
+<td align="left">collapse a selecting clade</td>
+</tr>
+<tr class="even">
+<td align="left">expand</td>
+<td align="left">expand collapsed clade</td>
+</tr>
+<tr class="odd">
+<td align="left">flip</td>
+<td align="left">exchange position of 2 clades that share a parent node</td>
+</tr>
+<tr class="even">
+<td align="left">groupClade</td>
+<td align="left">grouping clades</td>
+</tr>
+<tr class="odd">
+<td align="left">groupOTU</td>
+<td align="left">grouping OTUs by tracing back to most recent common ancestor</td>
+</tr>
+<tr class="even">
+<td align="left">identify</td>
+<td align="left">interactive tree manipulation</td>
+</tr>
+<tr class="odd">
+<td align="left">rotate</td>
+<td align="left">rotating a selected clade by 180 degree</td>
+</tr>
+<tr class="even">
+<td align="left">rotate_tree</td>
+<td align="left">rotating circular layout tree by specific angle</td>
+</tr>
+<tr class="odd">
+<td align="left">scaleClade</td>
+<td align="left">zoom in or zoom out selecting clade</td>
+</tr>
+<tr class="even">
+<td align="left">open_tree</td>
+<td align="left">convert a tree to fan layout by specific open angle</td>
+</tr>
+</tbody>
+</table>
+<!--
+
+Figure \@ref(fig:exampleTree) is an example tree for demonstrating tree manipulation.
+
+(ref:exampleTreescap) An example tree.
+
+(ref:exampleTreecap) **An example tree.** This tree was used to demonstrate how ggtree support exploring or manipulating phylogenetic tree visually. 
+
+\setstretch{1.2}
+
+```r
+library(ggtree)
+nwk <- system.file("extdata", "sample.nwk", package="treeio")
+tree <- read.tree(nwk)
+p <- ggtree(tree) + geom_tiplab()
+print(p)
+```
+
+<img src="ggtree-book_files/figure-html4/exampleTree-1.png" title="(ref:exampleTreecap)" alt="(ref:exampleTreecap)" width="672"  />
+\setstretch{1.5}
+-->
+<p>A clade is a monophyletic group that contains a single ancestor and all of its descendants. We can visualize a specific selected clade via the <code>viewClade</code> function as demonstrated in Figure <a href="#fig:viewClade"><strong>??</strong></a>B. Another similar function is <code>gzoom</code> which plots the tree with selected clade side by side. These two functions are developed to explore large tree.</p>
+
+
+
+<pre class="sourceCode r" id="cb45"><code class="sourceCode r"><div class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">library</span>(ggtree)</div>
+<div class="sourceLine" id="cb45-2" data-line-number="2">nwk &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;sample.nwk&quot;</span>, <span class="dt">package=</span><span class="st">&quot;treeio&quot;</span>)</div>
+<div class="sourceLine" id="cb45-3" data-line-number="3">tree &lt;-<span class="st"> </span><span class="kw">read.tree</span>(nwk)</div>
+<div class="sourceLine" id="cb45-4" data-line-number="4">p &lt;-<span class="st"> </span><span class="kw">ggtree</span>(tree) <span class="op">+</span><span class="st"> </span><span class="kw">geom_tiplab</span>()</div>
+<div class="sourceLine" id="cb45-5" data-line-number="5"><span class="kw">viewClade</span>(p, <span class="kw">MRCA</span>(p, <span class="dt">tip=</span><span class="kw">c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;L&quot;</span>)))</div></code></pre>
+
+<p><img src="ggtree-book_files/figure-html4/viewClade-1.png" title="<strong>Viewing a selected clade of a tree.</strong> An example tree used to demonstrate how <em>ggtree</em> support exploring or manipulating phylogenetic tree visually (A). The <em>ggtree</em> supports visualizing selected clade (B). A clade can be selected by specifying a node number or determined by most recent common ancestor of selected tips." alt="<strong>Viewing a selected clade of a tree.</strong> An example tree used to demonstrate how <em>ggtree</em> support exploring or manipulating phylogenetic tree visually (A). The <em>ggtree</em> supports visualizing selected clade (B). A clade can be selected by specifying a node number or determined by most recent common ancestor of selected tips." width="672"  /></p>
+<p>It is a common practice to prune or collapse clades so that certain aspects of a tree can be emphasized. The <em>ggtree</em> supports collapsing selected clades using the <code>collapse</code> function as shown in Figure <a href="#fig:collapseExpand"><strong>??</strong></a>A.</p>
+
+
+
+<pre class="sourceCode r" id="cb46"><code class="sourceCode r"><div class="sourceLine" id="cb46-1" data-line-number="1">p2 &lt;-<span class="st"> </span>p <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collapse</span>(<span class="dt">node=</span><span class="dv">21</span>) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb46-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point2</span>(<span class="kw">aes</span>(<span class="dt">subset=</span>(node<span class="op">==</span><span class="dv">21</span>)), <span class="dt">shape=</span><span class="dv">21</span>, <span class="dt">size=</span><span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&#39;green&#39;</span>)</div>
+<div class="sourceLine" id="cb46-3" data-line-number="3">p2 &lt;-<span class="st"> </span><span class="kw">collapse</span>(p2, <span class="dt">node=</span><span class="dv">23</span>) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb46-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point2</span>(<span class="kw">aes</span>(<span class="dt">subset=</span>(node<span class="op">==</span><span class="dv">23</span>)), <span class="dt">shape=</span><span class="dv">23</span>, <span class="dt">size=</span><span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&#39;red&#39;</span>)</div>
+<div class="sourceLine" id="cb46-5" data-line-number="5"><span class="kw">print</span>(p2)</div>
+<div class="sourceLine" id="cb46-6" data-line-number="6"><span class="kw">expand</span>(p2, <span class="dt">node=</span><span class="dv">23</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">expand</span>(<span class="dt">node=</span><span class="dv">21</span>)</div></code></pre>
+
+<p><img src="ggtree-book_files/figure-html4/collapseExpand-1.png" title="<strong>Collapsing selected clades and expanding collapsed clades.</strong> Clades can be selected to collapse (A) and the collapsed clades can be expanded back (B) if necessary as <em>ggtree</em> stored all information of species relationships. Green and red symbols were displayed on the tree to indicate the collapsed clades." alt="<strong>Collapsing selected clades and expanding collapsed clades.</strong> Clades can be selected to collapse (A) and the collapsed clades can be expanded back (B) if necessary as <em>ggtree</em> stored all information of species relationships. Green and red symbols were displayed on the tree to indicate the collapsed clades." width="672"  /></p>
+<p>Here two clades were collapsed and labelled by green circle and red square symbolic points. Collapsing is a common strategy to collapse clades that are too large for displaying in full or are not primary interest of the study. In <em>ggtree</em>, we can expand (<em>i.e.</em>, uncollapse) the collapsed branches back with <code>expand</code> function to show details of species relationships as demonstrated in Figure <a href="#fig:collapseExpand"><strong>??</strong></a>B.</p>
+<!--
+(ref:expandCladescap) Expanding collapsed clades.
+
+(ref:expandCladecap) **Expanding collapsed clades.** *ggtree* stored all information of species relationships and collapsed clades can be expanded back if necessary.
+
+
+\setstretch{1.2}
+
+```r
+expand(p2, node=23) %>% expand(node=21)
+```
+
+<img src="ggtree-book_files/figure-html4/expandClade-1.png" title="(ref:expandCladecap)" alt="(ref:expandCladecap)" width="672"  />
+\setstretch{1.5}
+-->
+<!-- Figure \@ref(fig:expandClade) demonstrated the tree with expanding collapsed clades. -->
+<!--
+Pruning or collapsing is a common strategy to collapse clades that below a minimum support threshold (*e.g.*, below 75% boostrap).
+-->
+<p>The <em>ggtree</em> provides another option to zoom out (or compress) these clades via the <code>scaleClade</code> function. In this way, we retain the topology and branch lengths of compressed clades. This helps to save the space to highlight those clades of primary interest to the study.</p>
+
+
+
+<pre class="sourceCode r" id="cb47"><code class="sourceCode r"><div class="sourceLine" id="cb47-1" data-line-number="1">tree2 &lt;-<span class="st"> </span><span class="kw">groupClade</span>(tree, <span class="kw">c</span>(<span class="dv">17</span>, <span class="dv">21</span>))</div>
+<div class="sourceLine" id="cb47-2" data-line-number="2">p &lt;-<span class="st"> </span><span class="kw">ggtree</span>(tree2, <span class="kw">aes</span>(<span class="dt">color=</span>group)) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb47-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;steelblue&quot;</span>))</div>
+<div class="sourceLine" id="cb47-4" data-line-number="4"><span class="kw">scaleClade</span>(p, <span class="dt">node=</span><span class="dv">17</span>, <span class="dt">scale=</span>.<span class="dv">1</span>) </div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/scaleClade-1.png" title="<strong>Scaling selected clade.</strong> Clades can be zoom in (if <code>scale &gt; 1</code>) to highlight or zoom out to save space." alt="<strong>Scaling selected clade.</strong> Clades can be zoom in (if <code>scale &gt; 1</code>) to highlight or zoom out to save space." width="672"  /> </p>
+<p>If users want to emphasize important clades, they can use <code>scaleClade</code> function with <code>scale</code> parameter larger than 1. Then the selected clade will be zoomed in. Users can also use <code>groupClade</code> to select clades and color them with different colors as shown in Figure <a href="#fig:scaleClade"><strong>??</strong></a>.</p>
+<p>Although <code>groupClade</code> works fine with clade (monophyletic), related taxa are not necessarily within a clade, they can be polyphyletic or paraphyletic. The <em>ggtree</em> implemented <code>groupOTU</code> to work with polyphyletic and paraphyletic. It accepts a vector of OTUs (taxa name) or a list of OTUs and will trace back from OTUs to their most recent common ancestor (MRCA) and cluster them together as demonstrated in Figure <a href="#fig:groupOTU"><strong>??</strong></a>.</p>
+
+
+
+<pre class="sourceCode r" id="cb48"><code class="sourceCode r"><div class="sourceLine" id="cb48-1" data-line-number="1">tree2 &lt;-<span class="st"> </span><span class="kw">groupOTU</span>(tree, <span class="dt">focus=</span><span class="kw">c</span>(<span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;G&quot;</span>))</div>
+<div class="sourceLine" id="cb48-2" data-line-number="2"><span class="kw">ggtree</span>(tree2, <span class="kw">aes</span>(<span class="dt">color=</span>group)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_tiplab</span>()</div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/groupOTU-1.png" title="<strong>Grouping OTUs.</strong> OTU clustering based on their relationships. Selected OTUs and their ancestors upto MRCA will be clustered together." alt="<strong>Grouping OTUs.</strong> OTU clustering based on their relationships. Selected OTUs and their ancestors upto MRCA will be clustered together." width="672"  /> </p>
+<p>To facilitate exploring the tree structure, <em>ggtree</em> supports rotating selected clade by 180 degree using the <code>rotate</code> function (Figure <a href="#fig:rfClade"><strong>??</strong></a>B). Position of immediate descendant clades of internal node can be exchanged via <code>flip</code> function (Figure <a href="#fig:rfClade"><strong>??</strong></a>C).</p>
+
+
+
+<pre class="sourceCode r" id="cb49"><code class="sourceCode r"><div class="sourceLine" id="cb49-1" data-line-number="1">p1 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point2</span>(<span class="kw">aes</span>(<span class="dt">subset=</span>node<span class="op">==</span><span class="dv">16</span>), <span class="dt">color=</span><span class="st">&#39;darkgreen&#39;</span>, <span class="dt">size=</span><span class="dv">5</span>)</div>
+<div class="sourceLine" id="cb49-2" data-line-number="2">p2 &lt;-<span class="st"> </span><span class="kw">rotate</span>(p1, <span class="dv">17</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rotate</span>(<span class="dv">21</span>)</div>
+<div class="sourceLine" id="cb49-3" data-line-number="3"><span class="kw">flip</span>(p2, <span class="dv">17</span>, <span class="dv">21</span>)</div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/rfClade-1.png" title="<strong>Exploring tree structure.</strong> A clade (indicated by darkgreen circle) in a tree (A) can be rotated by 180° (B) and the positions of its immediate descedant clades (colored by blue and red) can be exchanged (C)." alt="<strong>Exploring tree structure.</strong> A clade (indicated by darkgreen circle) in a tree (A) can be rotated by 180° (B) and the positions of its immediate descedant clades (colored by blue and red) can be exchanged (C)." width="672"  /> </p>
+<!--
+Position of descendant clades of an internal node can be exchanged via the `flip` function.
+
+(ref:flipscap) Example of flipping two descendant clades.
+
+(ref:flipcap) **Example of flipping two descendant clades.**
+
+\setstretch{1.2}
+
+```r
+flip(p2, 17, 21)
+```
+
+<img src="ggtree-book_files/figure-html4/flip-1.png" title="(ref:flipcap)" alt="(ref:flipcap)" width="672"  />
+\setstretch{1.5}
+-->
+<p>Most of the tree manipulation functions are working on clades, while <em>ggtree</em> also provides functions to manipulate a tree, including <code>open_tree</code> to transform a tree in either rectangular or circular layout to fan layout, and <code>rotate_tree</code> function to rotate a tree for specific angle in both circular or fan layouts, as demonstrated in Figure <a href="#fig:openTree"><strong>??</strong></a> and <a href="#fig:rotateTree"><strong>??</strong></a>.</p>
+
+<pre class="sourceCode r" id="cb50"><code class="sourceCode r"><div class="sourceLine" id="cb50-1" data-line-number="1">p3 &lt;-<span class="st"> </span><span class="kw">open_tree</span>(p, <span class="dv">180</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_tiplab2</span>()</div>
+<div class="sourceLine" id="cb50-2" data-line-number="2"><span class="kw">print</span>(p3)</div></code></pre>
+
+
+
+<p><img src="ggtree-book_files/figure-html4/openTree-1.png" title="<strong>Transforming a tree to fan layout.</strong> A tree can be transformed to fan layout by <code>open_tree</code> with specific <em>angle</em> parameter." alt="<strong>Transforming a tree to fan layout.</strong> A tree can be transformed to fan layout by <code>open_tree</code> with specific <em>angle</em> parameter." width="576"  /></p>
+
+<pre class="sourceCode r" id="cb51"><code class="sourceCode r"><div class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">rotate_tree</span>(p3, <span class="dv">180</span>)</div></code></pre>
+
+
+
+<p><img src="ggtree-book_files/figure-html4/rotateTree-1.png" title="<strong>Rotating tree.</strong> A circular/fan layout tree can be rotated by any specific <em>angle</em>." alt="<strong>Rotating tree.</strong> A circular/fan layout tree can be rotated by any specific <em>angle</em>." width="576"  /></p>
+</div>
+<div id="tree-annotation-using-data-from-evolutionary-analysis-software" class="section level3">
+<h3><span class="header-section-number">4.3.5</span> Tree annotation using data from evolutionary analysis software</h3>
+<p><a href="chapter-treeio.html#chapter-treeio">Chapter 2</a> has introduced using <em>treeio</em> packages to parse different tree formats and commonly used software outputs to obtain phylogeny-associated data. These imported data as <code>S4</code> objects can be visualized directly using <em>ggtree</em>. Figure <a href="#fig:ggtreeNHX"><strong>??</strong></a> demonstrates a tree annotated using the information (species classification, duplication event and bootstrap value) stored in NHX file. <em>PHYLODOG</em> and <em>RevBayes</em> output NHX files that can be parsed by <em>treeio</em> and visualized by <em>ggtree</em> with annotation using their inference data.</p>
+<p>Furthermore, the evolutionary data from the inference of <em>BEAST</em>, <em>MrBayes</em> and <em>RevBayes</em>, <em>d<sub>N</sub>/d<sub>S</sub></em> values inferred by <em>CodeML</em>, ancestral sequences inferred by <em>HyPhy</em>, <em>CodeML</em> or <em>BaseML</em> and short read placement by <em>EPA</em> and <em>pplacer</em> can be used to annotate the tree directly.</p>
+
+
+
+<pre class="sourceCode r" id="cb52"><code class="sourceCode r"><div class="sourceLine" id="cb52-1" data-line-number="1">file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata/BEAST&quot;</span>, <span class="st">&quot;beast_mcc.tree&quot;</span>, </div>
+<div class="sourceLine" id="cb52-2" data-line-number="2">                    <span class="dt">package=</span><span class="st">&quot;treeio&quot;</span>)</div>
+<div class="sourceLine" id="cb52-3" data-line-number="3">beast &lt;-<span class="st"> </span><span class="kw">read.beast</span>(file)</div>
+<div class="sourceLine" id="cb52-4" data-line-number="4"><span class="kw">ggtree</span>(beast) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb52-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_tiplab</span>(<span class="dt">align=</span><span class="ot">TRUE</span>, <span class="dt">linetype=</span><span class="st">&#39;dashed&#39;</span>, <span class="dt">linesize=</span>.<span class="dv">3</span>) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb52-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_range</span>(<span class="st">&quot;length_0.95_HPD&quot;</span>, <span class="dt">color=</span><span class="st">&#39;red&#39;</span>, <span class="dt">size=</span><span class="dv">2</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb52-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_text2</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">round</span>(<span class="kw">as.numeric</span>(posterior), <span class="dv">2</span>), </div>
+<div class="sourceLine" id="cb52-8" data-line-number="8">                 <span class="dt">subset=</span><span class="kw">as.numeric</span>(posterior)<span class="op">&gt;</span><span class="st"> </span><span class="fl">0.9</span>, </div>
+<div class="sourceLine" id="cb52-9" data-line-number="9">                 <span class="dt">x=</span>branch), <span class="dt">vjust=</span><span class="dv">0</span>) </div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/beast-1.png" title="<strong>Annotating <em>BEAST</em> tree with <em>length_95%_HPD</em> and posterior.</strong> Branch length credible intervals (95% HPD) were displayed as red horizontal bars and clade posterior values were shown on the middle of branches." alt="<strong>Annotating <em>BEAST</em> tree with <em>length_95%_HPD</em> and posterior.</strong> Branch length credible intervals (95% HPD) were displayed as red horizontal bars and clade posterior values were shown on the middle of branches." width="672"  /> </p>
+<p>In Figure <a href="#fig:beast"><strong>??</strong></a>, the tree was visualized and annotated with posterior &gt; 0.9 and demonstrated length uncertainty (95% Highest Posterior Density (HPD) interval).</p>
+<p>Ancestral sequences inferred by <em>HyPhy</em> can be parsed using <a href="chapter-treeio.html#parsing-hyphy-output"><em>treeio</em></a>, whereas the substitutions along each tree branch was automatically computed and stored inside the phylogenetic tree object (<em>i.e.</em>, <code>S4</code> object). The <em>ggtree</em> can utilize this information in the object to annotate the tree, as demonstrated in Figure <a href="#fig:hyphy"><strong>??</strong></a>.</p>
+
+
+
+<pre class="sourceCode r" id="cb53"><code class="sourceCode r"><div class="sourceLine" id="cb53-1" data-line-number="1">nwk &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata/HYPHY&quot;</span>, <span class="st">&quot;labelledtree.tree&quot;</span>, </div>
+<div class="sourceLine" id="cb53-2" data-line-number="2">                   <span class="dt">package=</span><span class="st">&quot;treeio&quot;</span>)</div>
+<div class="sourceLine" id="cb53-3" data-line-number="3">ancseq &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata/HYPHY&quot;</span>, <span class="st">&quot;ancseq.nex&quot;</span>, </div>
+<div class="sourceLine" id="cb53-4" data-line-number="4">                      <span class="dt">package=</span><span class="st">&quot;treeio&quot;</span>)</div>
+<div class="sourceLine" id="cb53-5" data-line-number="5">tipfas &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;pa.fas&quot;</span>, <span class="dt">package=</span><span class="st">&quot;treeio&quot;</span>)</div>
+<div class="sourceLine" id="cb53-6" data-line-number="6">hy &lt;-<span class="st"> </span><span class="kw">read.hyphy</span>(nwk, ancseq, tipfas)</div>
+<div class="sourceLine" id="cb53-7" data-line-number="7"><span class="kw">ggtree</span>(hy) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb53-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">x=</span>branch, <span class="dt">label=</span>AA_subs), <span class="dt">size=</span><span class="dv">2</span>, </div>
+<div class="sourceLine" id="cb53-9" data-line-number="9">            <span class="dt">vjust=</span><span class="op">-</span>.<span class="dv">3</span>, <span class="dt">color=</span><span class="st">&quot;firebrick&quot;</span>)</div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/hyphy-1.png" title="<strong>Annotating tree with amino acid substitution determined by ancestral sequences inferred by HYPHY.</strong> Amino acid substitutions were displayed on the middle of branches." alt="<strong>Annotating tree with amino acid substitution determined by ancestral sequences inferred by HYPHY.</strong> Amino acid substitutions were displayed on the middle of branches." width="748.8"  /> </p>
+<p><em>PAML</em>’s <em>BaseML</em> and <em>CodeML</em> can be also used to infer ancestral sequences, whereas <em>CodeML</em> can infer selection pressure. After parsing this information using <a href="chapter-treeio.html#parsing-paml-output"><em>treeio</em></a>, <em>ggtree</em> can integrate this information into the same tree structure and used for annotation as illustrated in Figure <a href="#fig:codeml"><strong>??</strong></a>.</p>
+
+
+
+<pre class="sourceCode r" id="cb54"><code class="sourceCode r"><div class="sourceLine" id="cb54-1" data-line-number="1">rstfile &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata/PAML_Codeml&quot;</span>, <span class="st">&quot;rst&quot;</span>, </div>
+<div class="sourceLine" id="cb54-2" data-line-number="2">                       <span class="dt">package=</span><span class="st">&quot;treeio&quot;</span>)</div>
+<div class="sourceLine" id="cb54-3" data-line-number="3">mlcfile &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata/PAML_Codeml&quot;</span>, <span class="st">&quot;mlc&quot;</span>, </div>
+<div class="sourceLine" id="cb54-4" data-line-number="4">                       <span class="dt">package=</span><span class="st">&quot;treeio&quot;</span>)</div>
+<div class="sourceLine" id="cb54-5" data-line-number="5">ml &lt;-<span class="st"> </span><span class="kw">read.codeml</span>(rstfile, mlcfile)</div>
+<div class="sourceLine" id="cb54-6" data-line-number="6"><span class="kw">ggtree</span>(ml, <span class="kw">aes</span>(<span class="dt">color=</span>dN_vs_dS), <span class="dt">branch.length=</span><span class="st">&#39;dN_vs_dS&#39;</span>) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb54-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_color_continuous</span>(<span class="dt">name=</span><span class="st">&#39;dN/dS&#39;</span>, <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.5</span>),</div>
+<div class="sourceLine" id="cb54-8" data-line-number="8">                         <span class="dt">oob=</span>scales<span class="op">::</span>squish,</div>
+<div class="sourceLine" id="cb54-9" data-line-number="9">                         <span class="dt">low=</span><span class="st">&#39;darkgreen&#39;</span>, <span class="dt">high=</span><span class="st">&#39;red&#39;</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb54-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">x=</span>branch, <span class="dt">label=</span>joint_AA_subs), </div>
+<div class="sourceLine" id="cb54-11" data-line-number="11">            <span class="dt">vjust=</span><span class="op">-</span>.<span class="dv">5</span>, <span class="dt">color=</span><span class="st">&#39;steelblue&#39;</span>, <span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb54-12" data-line-number="12"><span class="st">  </span><span class="kw">theme_tree2</span>(<span class="dt">legend.position=</span><span class="kw">c</span>(.<span class="dv">9</span>, <span class="fl">.3</span>))</div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/codeml-1.png" title="<strong>Annotating tree with animo acid substitution and <em>d<sub>N</sub>/d<sub>S</sub></em> inferred by <em>CodeML</em>.</strong> Branches were rescaled and colored by <em>d<sub>N</sub>/d<sub>S</sub></em> values and amino acid substitutions were displayed on the middle of branches." alt="<strong>Annotating tree with animo acid substitution and <em>d<sub>N</sub>/d<sub>S</sub></em> inferred by <em>CodeML</em>.</strong> Branches were rescaled and colored by <em>d<sub>N</sub>/d<sub>S</sub></em> values and amino acid substitutions were displayed on the middle of branches." width="672"  /> </p>
+<p>For more details and examples of annotating tree with evolutionary data inferred by different software packages can be referred to the online vignettes<a href="chapter-ggtree.html#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p>
+</div>
+<div id="tree-annotation-based-on-tree-classes-defined-in-other-r-packages" class="section level3">
+<h3><span class="header-section-number">4.3.6</span> Tree annotation based on tree classes defined in other R packages</h3>
+<p>The <em>ggtree</em> plays a unique role in R ecosystem to facilitate phylogenetic analysis. It serves as a generic tools for tree visualization and annotation with different associated data from various sources. Most of the phylogenetic tree classes defined in R community are supported, including <code>obkData</code>, <code>phyloseq</code>, <code>phylo</code>, <code>multiPhylo</code>, <code>phylo4</code> and <code>phylo4d</code>. Such that <em>ggtree</em> can be easily integrated into their analysis/packages. For instance, <em>phyloseq</em> users will find <em>ggtree</em> useful for visualizing microbiome data and for further annotations, since <em>ggtree</em> supports high-level of annotation using grammar of graphics and some of its features are not available in <em>phyloseq</em>. Here, examples of using <em>ggtree</em> to annotate <code>obkData</code> and <code>phyloseq</code> tree objects are demonstrated. There example data can be found in vignettes of <em>OutbreakTools</em> <span class="citation">(Jombart et al. <a href="#ref-jombart_outbreaktools_2014">2014</a>)</span> and <em>phyloseq</em> <span class="citation">(McMurdie and Holmes <a href="#ref-mcmurdie_phyloseq_2013">2013</a>)</span> packages.</p>
+<p>The <code>okbData</code> is defined to store incidence-based outbreak data, including meta data of sampling and information of infected individuals such as age and onset of symptoms. The <em>ggtree</em> supports parsing this information which was used to annotate the tree as shown in Figure <a href="#fig:outbreaktools"><strong>??</strong></a>.</p>
+
+
+
+<pre class="sourceCode r" id="cb55"><code class="sourceCode r"><div class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">library</span>(OutbreakTools)</div>
+<div class="sourceLine" id="cb55-2" data-line-number="2"><span class="kw">data</span>(FluH1N1pdm2009)</div>
+<div class="sourceLine" id="cb55-3" data-line-number="3"><span class="kw">attach</span>(FluH1N1pdm2009)</div>
+<div class="sourceLine" id="cb55-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb55-5" data-line-number="5">x &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&quot;obkData&quot;</span>, </div>
+<div class="sourceLine" id="cb55-6" data-line-number="6">         <span class="dt">individuals =</span> individuals, </div>
+<div class="sourceLine" id="cb55-7" data-line-number="7">         <span class="dt">dna =</span> dna,</div>
+<div class="sourceLine" id="cb55-8" data-line-number="8">         <span class="dt">dna.individualID =</span> samples<span class="op">$</span>individualID, </div>
+<div class="sourceLine" id="cb55-9" data-line-number="9">         <span class="dt">dna.date =</span> samples<span class="op">$</span>date,</div>
+<div class="sourceLine" id="cb55-10" data-line-number="10">         <span class="dt">trees =</span> FluH1N1pdm2009<span class="op">$</span>trees)</div>
+<div class="sourceLine" id="cb55-11" data-line-number="11"><span class="kw">ggtree</span>(x, <span class="dt">mrsd=</span><span class="st">&quot;2009-09-30&quot;</span>, <span class="dt">as.Date=</span><span class="ot">TRUE</span>, <span class="dt">right=</span><span class="ot">TRUE</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb55-12" data-line-number="12"><span class="st">    </span><span class="kw">geom_tippoint</span>(<span class="kw">aes</span>(<span class="dt">color=</span>location), <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span>.<span class="dv">75</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb55-13" data-line-number="13"><span class="st">    </span><span class="kw">scale_color_brewer</span>(<span class="st">&quot;location&quot;</span>, <span class="dt">palette=</span><span class="st">&quot;Spectral&quot;</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb55-14" data-line-number="14"><span class="st">    </span><span class="kw">theme_tree2</span>(<span class="dt">legend.position=</span><span class="st">&#39;right&#39;</span>)</div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/outbreaktools-1.png" title="<strong>Visualizing obkData tree object.</strong> <em>x</em>-axis was scaled by timeline of the outbreak and tips were colored by location of different individuals." alt="<strong>Visualizing obkData tree object.</strong> <em>x</em>-axis was scaled by timeline of the outbreak and tips were colored by location of different individuals." width="604.8"  /> </p>
+<p>The <code>phyloseq</code> class that defined in the <em>phyloseq</em> package was designed for storing microbiome data, including phylogenetic tree, associated sample data and taxonomy assignment. It can import data from popular pipelines, such as <em>QIIME</em> <span class="citation">(Kuczynski et al. <a href="#ref-kuczynski_using_2011">2011</a>)</span>, <em>mothur</em> <span class="citation">(Schloss et al. <a href="#ref-schloss_introducing_2009">2009</a>)</span>, <em>DADA2</em> <span class="citation">(Callahan et al. <a href="#ref-callahan_dada2_2016">2016</a>)</span> and <em>PyroTagger</em> <span class="citation">(Kunin and Hugenholtz <a href="#ref-kunin_pyrotagger_2010">2010</a>)</span>, <em>etc.</em>. The <em>ggtree</em> supports visualizing the phylogenetic tree stored in <code>phyloseq</code> object and related data can be used to annotate the tree as demonstrated in Figure <a href="#fig:phyloseq"><strong>??</strong></a>.</p>
+
+
+
+<pre class="sourceCode r" id="cb56"><code class="sourceCode r"><div class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">library</span>(phyloseq)</div>
+<div class="sourceLine" id="cb56-2" data-line-number="2"><span class="kw">library</span>(ggjoy)</div>
+<div class="sourceLine" id="cb56-3" data-line-number="3"><span class="kw">library</span>(dplyr)</div>
+<div class="sourceLine" id="cb56-4" data-line-number="4"><span class="kw">library</span>(ggtree)</div>
+<div class="sourceLine" id="cb56-5" data-line-number="5"></div>
+<div class="sourceLine" id="cb56-6" data-line-number="6"><span class="kw">data</span>(<span class="st">&quot;GlobalPatterns&quot;</span>)</div>
+<div class="sourceLine" id="cb56-7" data-line-number="7">GP &lt;-<span class="st"> </span>GlobalPatterns</div>
+<div class="sourceLine" id="cb56-8" data-line-number="8">GP &lt;-<span class="st"> </span><span class="kw">prune_taxa</span>(<span class="kw">taxa_sums</span>(GP) <span class="op">&gt;</span><span class="st"> </span><span class="dv">600</span>, GP)</div>
+<div class="sourceLine" id="cb56-9" data-line-number="9"><span class="kw">sample_data</span>(GP)<span class="op">$</span>human &lt;-<span class="st"> </span><span class="kw">get_variable</span>(GP, <span class="st">&quot;SampleType&quot;</span>) <span class="op">%in%</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb56-10" data-line-number="10"><span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;Feces&quot;</span>, <span class="st">&quot;Skin&quot;</span>) </div>
+<div class="sourceLine" id="cb56-11" data-line-number="11"></div>
+<div class="sourceLine" id="cb56-12" data-line-number="12">mergedGP &lt;-<span class="st"> </span><span class="kw">merge_samples</span>(GP, <span class="st">&quot;SampleType&quot;</span>)</div>
+<div class="sourceLine" id="cb56-13" data-line-number="13">mergedGP &lt;-<span class="st"> </span><span class="kw">rarefy_even_depth</span>(mergedGP,<span class="dt">rngseed=</span><span class="dv">394582</span>)</div>
+<div class="sourceLine" id="cb56-14" data-line-number="14">mergedGP &lt;-<span class="st"> </span><span class="kw">tax_glom</span>(mergedGP,<span class="st">&quot;Order&quot;</span>) </div>
+<div class="sourceLine" id="cb56-15" data-line-number="15"></div>
+<div class="sourceLine" id="cb56-16" data-line-number="16">melt_simple &lt;-<span class="st"> </span><span class="kw">psmelt</span>(mergedGP) <span class="op">%&gt;%</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb56-17" data-line-number="17"><span class="st">  </span><span class="kw">filter</span>(Abundance <span class="op">&lt;</span><span class="st"> </span><span class="dv">120</span>) <span class="op">%&gt;%</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb56-18" data-line-number="18"><span class="st">  </span><span class="kw">select</span>(OTU, <span class="dt">val=</span>Abundance)</div>
+<div class="sourceLine" id="cb56-19" data-line-number="19"></div>
+<div class="sourceLine" id="cb56-20" data-line-number="20">p &lt;-<span class="st"> </span><span class="kw">ggtree</span>(mergedGP) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb56-21" data-line-number="21"><span class="st">  </span><span class="kw">geom_tippoint</span>(<span class="kw">aes</span>(<span class="dt">color=</span>Phylum), <span class="dt">size=</span><span class="fl">1.5</span>)</div>
+<div class="sourceLine" id="cb56-22" data-line-number="22"></div>
+<div class="sourceLine" id="cb56-23" data-line-number="23"><span class="kw">facet_plot</span>(p, <span class="dt">panel=</span><span class="st">&quot;Abundance&quot;</span>, <span class="dt">data=</span>melt_simple, </div>
+<div class="sourceLine" id="cb56-24" data-line-number="24">           geom_joy, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>val,<span class="dt">group=</span>label, </div>
+<div class="sourceLine" id="cb56-25" data-line-number="25">                                        <span class="dt">fill=</span>Phylum), </div>
+<div class="sourceLine" id="cb56-26" data-line-number="26">           <span class="dt">color=</span><span class="st">&#39;grey80&#39;</span>, <span class="dt">lwd=</span>.<span class="dv">3</span>)</div></code></pre>
+<p><img src="ggtree-book_files/figure-html4/phyloseq-1.png" title="<strong>Visualizing phyloseq tree object.</strong> Tips were colored by Phylum and corresponding abundance across different samples were visualized as joyplots and sorted according to the tree structure." alt="<strong>Visualizing phyloseq tree object.</strong> Tips were colored by Phylum and corresponding abundance across different samples were visualized as joyplots and sorted according to the tree structure." width="864"  /> </p>
+<!--
+### Tree Annotation with user data
+
+### Extending ggtree with other ggplot2 extensions
+
+some example, just show figure and put the code in supplemental
+-->
+</div>
+<div id="advanced-annotation-on-the-phylogenetic-tree" class="section level3">
+<h3><span class="header-section-number">4.3.7</span> Advanced annotation on the phylogenetic tree</h3>
+<p>The <em>ggtree</em> supports grammar of graphics that implemented in <em>ggplot2</em> package and provides several layers and functions to facilitate phylogenetic visualization and annotation. These layers and functions are not designed for specific tasks, they are building blocks that can be freely combined together to produce complex tree figure. Previous sessions have introduced some important functions of <em>ggtree</em>. In this session, three examples were presented to demonstrate using various <em>ggtree</em> functions together to construct a complex tree figure with annotations by associated data and inference results from different analysis programs.</p>
+<!--
+
+Example 1: using evolutionary inferences
+Example 2: using user's data
+Example 3: analyzing tree in R
+
+-->
+<div id="example1" class="section level4">
+<h4><span class="header-section-number">4.3.7.1</span> Example 1: plot curated gene information as heatmap</h4>
+<p>This example introduces annotating a tree with various sources of data (<em>e.g.</em>, location, sampling year, curated genotype information, <em>etc.</em>).</p>
+
+<pre class="sourceCode r" id="cb57"><code class="sourceCode r"><div class="sourceLine" id="cb57-1" data-line-number="1">## use the following command to get the data from Holt Lab</div>
+<div class="sourceLine" id="cb57-2" data-line-number="2">## git clong https://github.com/katholt/plotTree.git</div>
+<div class="sourceLine" id="cb57-3" data-line-number="3"></div>
+<div class="sourceLine" id="cb57-4" data-line-number="4"><span class="kw">setwd</span>(<span class="st">&quot;plotTree/tree_example_april2015/&quot;</span>)</div>
+<div class="sourceLine" id="cb57-5" data-line-number="5"></div>
+<div class="sourceLine" id="cb57-6" data-line-number="6">info &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;info.csv&quot;</span>)</div>
+<div class="sourceLine" id="cb57-7" data-line-number="7">tree &lt;-<span class="st"> </span><span class="kw">read.tree</span>(<span class="st">&quot;tree.nwk&quot;</span>)</div>
+<div class="sourceLine" id="cb57-8" data-line-number="8">cols &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">HCMC=</span><span class="st">&#39;black&#39;</span>, <span class="dt">Hue=</span><span class="st">&#39;purple2&#39;</span>, <span class="dt">KH=</span><span class="st">&#39;skyblue2&#39;</span>)</div>
+<div class="sourceLine" id="cb57-9" data-line-number="9"></div>
+<div class="sourceLine" id="cb57-10" data-line-number="10">p &lt;-<span class="st"> </span><span class="kw">ggtree</span>(tree, <span class="dt">layout=</span><span class="st">&#39;circular&#39;</span>) <span class="op">%&lt;+%</span><span class="st"> </span>info <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb57-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_tippoint</span>(<span class="kw">aes</span>(<span class="dt">color=</span>location)) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb57-12" data-line-number="12"><span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values=</span>cols) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb57-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_tiplab2</span>(<span class="kw">aes</span>(<span class="dt">label=</span>name), <span class="dt">align=</span>T, <span class="dt">linetype=</span><span class="ot">NA</span>, </div>
+<div class="sourceLine" id="cb57-14" data-line-number="14">              <span class="dt">size=</span><span class="dv">2</span>, <span class="dt">offset=</span><span class="dv">4</span>, <span class="dt">hjust=</span><span class="fl">0.5</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb57-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_tiplab2</span>(<span class="kw">aes</span>(<span class="dt">label=</span>year), <span class="dt">align=</span>T, <span class="dt">linetype=</span><span class="ot">NA</span>, </div>
+<div class="sourceLine" id="cb57-16" data-line-number="16">              <span class="dt">size=</span><span class="dv">2</span>, <span class="dt">offset=</span><span class="dv">8</span>, <span class="dt">hjust=</span><span class="fl">0.5</span>)</div></code></pre>
+
+<p>The tree was visualized in <code>circular</code> layout and attached with the strain sampling location information. A <code>geom_tippoint</code> layer added circular symbolic points to tree tips and colored them by their locations. Two <code>geom_tiplab2</code> were added to display taxon names and sampling years.</p>
+
+<pre class="sourceCode r" id="cb58"><code class="sourceCode r"><div class="sourceLine" id="cb58-1" data-line-number="1">heatmapData=<span class="kw">read.csv</span>(<span class="st">&quot;res_genes.csv&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb58-2" data-line-number="2">rn &lt;-<span class="st"> </span><span class="kw">rownames</span>(heatmapData)</div>
+<div class="sourceLine" id="cb58-3" data-line-number="3">heatmapData &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">sapply</span>(heatmapData, as.character))</div>
+<div class="sourceLine" id="cb58-4" data-line-number="4"><span class="kw">rownames</span>(heatmapData) &lt;-<span class="st"> </span>rn</div>
+<div class="sourceLine" id="cb58-5" data-line-number="5"></div>
+<div class="sourceLine" id="cb58-6" data-line-number="6">heatmap.colours &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;grey&quot;</span>,<span class="st">&quot;seagreen3&quot;</span>,<span class="st">&quot;darkgreen&quot;</span>,</div>
+<div class="sourceLine" id="cb58-7" data-line-number="7">                    <span class="st">&quot;green&quot;</span>,<span class="st">&quot;brown&quot;</span>,<span class="st">&quot;tan&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;orange&quot;</span>,</div>
+<div class="sourceLine" id="cb58-8" data-line-number="8">                    <span class="st">&quot;pink&quot;</span>,<span class="st">&quot;magenta&quot;</span>,<span class="st">&quot;purple&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;skyblue3&quot;</span>,</div>
+<div class="sourceLine" id="cb58-9" data-line-number="9">                    <span class="st">&quot;blue&quot;</span>,<span class="st">&quot;skyblue2&quot;</span>)</div>
+<div class="sourceLine" id="cb58-10" data-line-number="10"><span class="kw">names</span>(heatmap.colours) &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">15</span></div>
+<div class="sourceLine" id="cb58-11" data-line-number="11"></div>
+<div class="sourceLine" id="cb58-12" data-line-number="12"><span class="kw">gheatmap</span>(p, heatmapData, <span class="dt">offset =</span> <span class="dv">10</span>, <span class="dt">color=</span><span class="ot">NULL</span>, </div>
+<div class="sourceLine" id="cb58-13" data-line-number="13">         <span class="dt">colnames_position=</span><span class="st">&quot;top&quot;</span>, </div>
+<div class="sourceLine" id="cb58-14" data-line-number="14">         <span class="dt">colnames_angle=</span><span class="dv">90</span>, <span class="dt">colnames_offset_y =</span> <span class="dv">1</span>, </div>
+<div class="sourceLine" id="cb58-15" data-line-number="15">         <span class="dt">hjust=</span><span class="dv">0</span>, <span class="dt">font.size=</span><span class="dv">2</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb58-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values=</span>heatmap.colours, <span class="dt">breaks=</span><span class="dv">0</span><span class="op">:</span><span class="dv">15</span>)</div></code></pre>
+
+<p>The curated gene information was further loaded and plotted as a heatmap using <code>gheatmap</code> function with customized colors. The final figure was demonstrated in Figure <a href="#fig:curatedgene"><strong>??</strong></a>.</p>
+
+
+<p><img src="ggtree-book_files/figure-html4/curatedgene-1.png" title="<strong>Example of annotating a tree with diverse associated data.</strong> Circle symbols are colored by strain sampling location. Taxa names and sampling years are aligned to the tips. Curated gene information were visualized as a heatmap (colored boxed on the outer circles)." alt="<strong>Example of annotating a tree with diverse associated data.</strong> Circle symbols are colored by strain sampling location. Taxa names and sampling years are aligned to the tips. Curated gene information were visualized as a heatmap (colored boxed on the outer circles)." width="672"  /></p>
+</div>
+<div id="example2" class="section level4">
+<h4><span class="header-section-number">4.3.7.2</span> Example 2: complex tree annotations</h4>
+<!--
+In [exmaple 2](#example2) I introduced to annotate a tree with external data (*i.e.*, location, sampling year, curated gene information), here I introduce more complex annotation with evolutionary evidences inferred by different software (BEAST and CodeML in this example) and associated data (*e.g.*, genotype table). 
+-->
+<p>The <em>ggtree</em> allows various evidences inferred by different software to be integrated, compared and visualized on a same tree topology. Data from external files can be further integrated for analysis and visualization. This example introduces complex tree annotations with evolutionary data inferred by different software (<em>BEAST</em> and <em>CodeML</em> in this example) and other associated data (<em>e.g.</em>, genotype table).</p>
+
+<pre class="sourceCode r" id="cb59"><code class="sourceCode r"><div class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">library</span>(treeio)</div>
+<div class="sourceLine" id="cb59-2" data-line-number="2"><span class="kw">library</span>(ggtree)</div>
+<div class="sourceLine" id="cb59-3" data-line-number="3"></div>
+<div class="sourceLine" id="cb59-4" data-line-number="4">beast_file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;examples/MCC_FluA_H3.tree&quot;</span>, </div>
+<div class="sourceLine" id="cb59-5" data-line-number="5">                          <span class="dt">package=</span><span class="st">&quot;ggtree&quot;</span>)</div>
+<div class="sourceLine" id="cb59-6" data-line-number="6">rst_file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;examples/rst&quot;</span>, <span class="dt">package=</span><span class="st">&quot;ggtree&quot;</span>)</div>
+<div class="sourceLine" id="cb59-7" data-line-number="7">mlc_file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;examples/mlc&quot;</span>, <span class="dt">package=</span><span class="st">&quot;ggtree&quot;</span>)</div>
+<div class="sourceLine" id="cb59-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb59-9" data-line-number="9">beast_tree &lt;-<span class="st"> </span><span class="kw">read.beast</span>(beast_file)</div>
+<div class="sourceLine" id="cb59-10" data-line-number="10">codeml_tree &lt;-<span class="st"> </span><span class="kw">read.codeml</span>(rst_file, mlc_file)</div>
+<div class="sourceLine" id="cb59-11" data-line-number="11">merged_tree &lt;-<span class="st"> </span><span class="kw">merge_tree</span>(beast_tree, codeml_tree)</div>
+<div class="sourceLine" id="cb59-12" data-line-number="12"></div>
+<div class="sourceLine" id="cb59-13" data-line-number="13">cols &lt;-<span class="st"> </span><span class="kw">scale_color</span>(merged_tree, <span class="st">&quot;dN_vs_dS&quot;</span>, </div>
+<div class="sourceLine" id="cb59-14" data-line-number="14">                    <span class="dt">low=</span><span class="st">&quot;#0072B2&quot;</span>, <span class="dt">high=</span><span class="st">&quot;#D55E00&quot;</span>,</div>
+<div class="sourceLine" id="cb59-15" data-line-number="15">                    <span class="dt">interval=</span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span>, <span class="dt">length.out=</span><span class="dv">100</span>))</div>
+<div class="sourceLine" id="cb59-16" data-line-number="16">p &lt;-<span class="st"> </span><span class="kw">ggtree</span>(merged_tree, <span class="dt">size=</span>.<span class="dv">8</span>, <span class="dt">mrsd=</span><span class="st">&quot;2013-01-01&quot;</span>, </div>
+<div class="sourceLine" id="cb59-17" data-line-number="17">            <span class="dt">ndigits =</span> <span class="dv">2</span>, <span class="dt">color=</span>cols)</div>
+<div class="sourceLine" id="cb59-18" data-line-number="18">p &lt;-<span class="st"> </span><span class="kw">add_colorbar</span>(p, cols, <span class="dt">font.size=</span><span class="dv">3</span>)</div>
+<div class="sourceLine" id="cb59-19" data-line-number="19"></div>
+<div class="sourceLine" id="cb59-20" data-line-number="20">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>posterior), <span class="dt">color=</span><span class="st">&quot;darkgreen&quot;</span>, </div>
+<div class="sourceLine" id="cb59-21" data-line-number="21">                   <span class="dt">vjust=</span><span class="op">-</span>.<span class="dv">1</span>, <span class="dt">hjust=</span><span class="op">-</span>.<span class="dv">03</span>, <span class="dt">size=</span><span class="fl">1.8</span>)</div></code></pre>
+
+<p>First of all, <em>BEAST</em> and <em>CodeML</em> outputs were parsed, and the two trees with the associated data were merged into one. After merging, all statistical data inferred by these software packages, including divergence time and <em>d<sub>N</sub>/d<sub>S</sub></em> will be incorporated into the <code>merged_tree</code> object. The tree was first visualized in time-scale and its branches were colored with <em>d<sub>N</sub>/d<sub>S</sub></em>, and annotated the tree with posterior clade probabilities.</p>
+
+<pre class="sourceCode r" id="cb60"><code class="sourceCode r"><div class="sourceLine" id="cb60-1" data-line-number="1">site_file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;examples/sites.txt&quot;</span>, <span class="dt">package=</span><span class="st">&quot;ggtree&quot;</span>)</div>
+<div class="sourceLine" id="cb60-2" data-line-number="2">site &lt;-<span class="st"> </span><span class="kw">read.table</span>(site_file)[,<span class="dv">1</span>]</div>
+<div class="sourceLine" id="cb60-3" data-line-number="3">tree &lt;-<span class="st"> </span><span class="kw">mask</span>(merged_tree, <span class="st">&quot;joint_AA_subs&quot;</span>, site, <span class="dt">mask_site =</span> <span class="ot">FALSE</span>)</div>
+<div class="sourceLine" id="cb60-4" data-line-number="4">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">x=</span>branch, <span class="dt">label=</span>joint_AA_subs), </div>
+<div class="sourceLine" id="cb60-5" data-line-number="5">                   <span class="dt">vjust=</span><span class="op">-</span>.<span class="dv">03</span>, <span class="dt">size=</span><span class="fl">1.8</span>)</div></code></pre>
+
+<p>The tree branches were further annotated with amino acid substitutions pre-computed from taxon sequences and the ancestral sequences imported from <em>CodeML</em>.</p>
+<!--which were determined by comparing parent-child sequencesfrom taxon sequences and ancestral sequences that were estimated by *CodeML*.-->
+
+<pre class="sourceCode r" id="cb61"><code class="sourceCode r"><div class="sourceLine" id="cb61-1" data-line-number="1">tip &lt;-<span class="st"> </span><span class="kw">get.tree</span>(merged_tree)<span class="op">$</span>tip.label</div>
+<div class="sourceLine" id="cb61-2" data-line-number="2">host &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;Human&quot;</span>, <span class="kw">length</span>(tip))</div>
+<div class="sourceLine" id="cb61-3" data-line-number="3">host[<span class="kw">grep</span>(<span class="st">&quot;Swine&quot;</span>, tip)] &lt;-<span class="st"> &quot;Swine&quot;</span></div>
+<div class="sourceLine" id="cb61-4" data-line-number="4">host.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">taxa=</span>tip, <span class="dt">host=</span><span class="kw">factor</span>(host))</div>
+<div class="sourceLine" id="cb61-5" data-line-number="5"></div>
+<div class="sourceLine" id="cb61-6" data-line-number="6">p &lt;-<span class="st"> </span>p <span class="op">%&lt;+%</span><span class="st"> </span>host.df <span class="op">+</span><span class="st"> </span><span class="kw">geom_tippoint</span>(<span class="kw">aes</span>(<span class="dt">color=</span>host), <span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb61-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_tiplab</span>(<span class="kw">aes</span>(<span class="dt">color=</span>host), <span class="dt">align=</span><span class="ot">TRUE</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">linesize=</span>.<span class="dv">3</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb61-8" data-line-number="8"><span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#377EB8&quot;</span>, <span class="st">&quot;#E41A1C&quot;</span>), <span class="dt">guide=</span><span class="st">&#39;none&#39;</span>)</div></code></pre>
+
+<p>Symbolic points were added to tree tips with different colors to differentiate host species of the influenza virus samples (blue for human and red for swine).</p>
+
+<pre class="sourceCode r" id="cb62"><code class="sourceCode r"><div class="sourceLine" id="cb62-1" data-line-number="1">genotype_file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;examples/Genotype.txt&quot;</span>, <span class="dt">package=</span><span class="st">&quot;ggtree&quot;</span>)</div>
+<div class="sourceLine" id="cb62-2" data-line-number="2">genotype &lt;-<span class="st"> </span><span class="kw">read.table</span>(genotype_file, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">stringsAsFactor=</span>F)</div>
+<div class="sourceLine" id="cb62-3" data-line-number="3"><span class="kw">colnames</span>(genotype) &lt;-<span class="st"> </span><span class="kw">sub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="kw">colnames</span>(genotype))</div>
+<div class="sourceLine" id="cb62-4" data-line-number="4">genotype[genotype <span class="op">==</span><span class="st"> &quot;trig&quot;</span>] &lt;-<span class="st"> &quot;TRIG&quot;</span></div>
+<div class="sourceLine" id="cb62-5" data-line-number="5">genotype[genotype <span class="op">==</span><span class="st"> &quot;pdm&quot;</span>] &lt;-<span class="st"> &quot;Pdm/09&quot;</span></div>
+<div class="sourceLine" id="cb62-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb62-7" data-line-number="7">p &lt;-<span class="st"> </span><span class="kw">gheatmap</span>(p, genotype, <span class="dt">width=</span>.<span class="dv">4</span>, <span class="dt">offset=</span><span class="dv">7</span>, <span class="dt">colnames=</span>F) <span class="op">%&gt;%</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb62-8" data-line-number="8"><span class="st">  </span>scale_x_ggtree</div>
+<div class="sourceLine" id="cb62-9" data-line-number="9">p <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette=</span><span class="st">&quot;Set2&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_tree2</span>() <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb62-10" data-line-number="10"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.6</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Time&quot;</span>) <span class="op">+</span></div>
+<div class="sourceLine" id="cb62-11" data-line-number="11"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">8</span>), </div>
+<div class="sourceLine" id="cb62-12" data-line-number="12">        <span class="dt">legend.key.height=</span><span class="kw">unit</span>(.<span class="dv">5</span>, <span class="st">&quot;cm&quot;</span>),</div>
+<div class="sourceLine" id="cb62-13" data-line-number="13">        <span class="dt">legend.key.width=</span><span class="kw">unit</span>(.<span class="dv">4</span>, <span class="st">&quot;cm&quot;</span>), </div>
+<div class="sourceLine" id="cb62-14" data-line-number="14">        <span class="dt">legend.position=</span><span class="kw">c</span>(.<span class="dv">13</span>, <span class="dt">y=</span>.<span class="dv">945</span>),</div>
+<div class="sourceLine" id="cb62-15" data-line-number="15">        <span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>), </div>
+<div class="sourceLine" id="cb62-16" data-line-number="16">        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>))</div></code></pre>
+
+<p>Finally, a genotype table (imported from external file) was plotted as a heatmap and aligned to the tree according to the tree structure as shown in Figure <a href="#fig:ggtree5"><strong>??</strong></a>.</p>
+
+
+<p><img src="ggtree-book_files/figure-html4/ggtree5-1.png" title="<strong>Example of annotating a tree with evolutionary evidences inferred by different software.</strong> The <em>x</em>-axis is the time scale (in units of year) inferred by <em>BEAST</em>. The tree branches are colored by their <em>d<sub>N</sub>/d<sub>S</sub></em> values (as in the left scale at the top) inferred by <em>CodeML</em>, and the internal node labels show the posteria probabilities inferred by <em>BEAST</em>. Tip labels (taxon names) and circles are colored by species (human in blue and swine in red). The genotype, which is shown as an array of colored boxes on the right, is composed of the lineages (either HuH3N2, Pdm/09 or TRIG, colored as in the right legend at the top) of the eight genome segments of the virus. Any missing segment sequences are shown as empty boxes." alt="<strong>Example of annotating a tree with evolutionary evidences inferred by different software.</strong> The <em>x</em>-axis is the time scale (in units of year) inferred by <em>BEAST</em>. The tree branches are colored by their <em>d<sub>N</sub>/d<sub>S</sub></em> values (as in the left scale at the top) inferred by <em>CodeML</em>, and the internal node labels show the posteria probabilities inferred by <em>BEAST</em>. Tip labels (taxon names) and circles are colored by species (human in blue and swine in red). The genotype, which is shown as an array of colored boxes on the right, is composed of the lineages (either HuH3N2, Pdm/09 or TRIG, colored as in the right legend at the top) of the eight genome segments of the virus. Any missing segment sequences are shown as empty boxes." width="1056"  /></p>
+</div>
+<div id="example3" class="section level4">
+<h4><span class="header-section-number">4.3.7.3</span> Example 3: Integrating <em>ggtree</em> in analysis pipeline/workflow</h4>
+<p>In the first example, a tree figure was annotated with external data, whereas second example introduced more complex annotations with evolutionary data inferred by different software and other associated data. This example will demonstrate integrating <em>ggtree</em> to an analysis pipeline that start from nucleotide sequence, building a tree, using <em>R</em> package to inferred ancestral sequences and states, then using <em>ggtree</em> to integrate these inferences to visualize and interpret results to help identify evolutionary patterns.</p>
+<p>In this example, we collected 1498 H3 sequences (restrict host to Avian only to reduce sequence number for demonstration) with criteria of minimum length of 1000bp (access date: 2016/02/20). H3 sequences were aligned by <em>MUSCLE</em> <span class="citation">(Edgar <a href="#ref-edgar_muscle_2004">2004</a>)</span> and the tree was build using <em>RAxML</em> <span class="citation">(Stamatakis <a href="#ref-stamatakis_raxml_2014">2014</a>)</span> with <em>GTRGAMMA</em> model. Ancestral sequences were estimated by <em>phangorn</em> <span class="citation">(Schliep <a href="#ref-schliep_phangorn_2011">2011</a>)</span>.</p>
+
+<pre class="sourceCode r" id="cb63"><code class="sourceCode r"><div class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">library</span>(phangorn)</div>
+<div class="sourceLine" id="cb63-2" data-line-number="2"><span class="kw">library</span>(ggtree)</div>
+<div class="sourceLine" id="cb63-3" data-line-number="3"></div>
+<div class="sourceLine" id="cb63-4" data-line-number="4">treefile &lt;-<span class="st"> &quot;RAxML_bestTree.Aln_All_H3.nwk&quot;</span></div>
+<div class="sourceLine" id="cb63-5" data-line-number="5">tipseqfile &lt;-<span class="st"> &quot;Aln_All_H3_filted.fas&quot;</span></div>
+<div class="sourceLine" id="cb63-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb63-7" data-line-number="7">tre &lt;-<span class="st"> </span><span class="kw">read.tree</span>(treefile)</div>
+<div class="sourceLine" id="cb63-8" data-line-number="8">tre2 &lt;-<span class="st"> </span><span class="kw">midpoint</span>(<span class="kw">as.binary</span>(tre))</div>
+<div class="sourceLine" id="cb63-9" data-line-number="9"></div>
+<div class="sourceLine" id="cb63-10" data-line-number="10">tipseq &lt;-<span class="st"> </span><span class="kw">read.phyDat</span>(tipseqfile, <span class="dt">format =</span> <span class="st">&quot;fasta&quot;</span>)</div>
+<div class="sourceLine" id="cb63-11" data-line-number="11">fit &lt;-<span class="st"> </span><span class="kw">pml</span>(tre2, tipseq, <span class="dt">k =</span> <span class="dv">4</span>)</div>
+<div class="sourceLine" id="cb63-12" data-line-number="12">fit &lt;-<span class="st"> </span><span class="kw">optim.pml</span>(fit, <span class="dt">optNni =</span> <span class="ot">FALSE</span>, <span class="dt">optBf =</span> <span class="ot">TRUE</span>, <span class="dt">optQ =</span> <span class="ot">TRUE</span>,</div>
+<div class="sourceLine" id="cb63-13" data-line-number="13">                 <span class="dt">optInv =</span> <span class="ot">TRUE</span>, <span class="dt">optGamma =</span> TURE, <span class="dt">optEdge =</span> <span class="ot">FALSE</span>,</div>
+<div class="sourceLine" id="cb63-14" data-line-number="14">                 <span class="dt">optRooted =</span> <span class="ot">FALSE</span>, <span class="dt">model =</span> <span class="st">&quot;GTR&quot;</span>)</div>
+<div class="sourceLine" id="cb63-15" data-line-number="15"></div>
+<div class="sourceLine" id="cb63-16" data-line-number="16">phangorn &lt;-<span class="st"> </span><span class="kw">phyPML</span>(fit, <span class="dt">type =</span> <span class="st">&quot;joint&quot;</span>)</div></code></pre>
+
+<p>The <code>pml</code> function computed the likelihood of the tree given the sequence alignment and <code>optim.pml</code> function optimized different parameters under the GTR model. The function <code>phyPML</code>, implemented in <em><a href="chapter-treeio.html#chapter-treeio">treeio</a></em>, collected ancestral sequences inferred by <code>optim.pml</code> and determined amino acid sustitution by comparing parent sequence to child sequence.</p>
+
+<pre class="sourceCode r" id="cb64"><code class="sourceCode r"><div class="sourceLine" id="cb64-1" data-line-number="1">host &lt;-<span class="st"> </span><span class="kw">sub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">w+</span><span class="ch">\\</span><span class="st">|A/([A-Za-z_</span><span class="ch">\\</span><span class="st">-]+)/.*&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, </div>
+<div class="sourceLine" id="cb64-2" data-line-number="2">            phangorn<span class="op">@</span>phylo<span class="op">$</span>tip.label) <span class="op">%&gt;%</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb64-3" data-line-number="3"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;-&quot;</span>, <span class="st">&quot;_&quot;</span>, .) <span class="op">%&gt;%</span><span class="st"> </span>tolower <span class="op">%&gt;%</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb64-4" data-line-number="4"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;.*_(</span><span class="ch">\\</span><span class="st">w+)$&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, .)</div>
+<div class="sourceLine" id="cb64-5" data-line-number="5"></div>
+<div class="sourceLine" id="cb64-6" data-line-number="6"><span class="kw">names</span>(host) &lt;-<span class="st"> </span>phangorn<span class="op">@</span>phylo<span class="op">$</span>tip.label</div>
+<div class="sourceLine" id="cb64-7" data-line-number="7"></div>
+<div class="sourceLine" id="cb64-8" data-line-number="8">host_inf &lt;-<span class="st"> </span><span class="kw">ace</span>(host, phangorn<span class="op">@</span>phylo, <span class="dt">type=</span><span class="st">&quot;discrete&quot;</span>, <span class="dt">method=</span><span class="st">&quot;ML&quot;</span>)</div>
+<div class="sourceLine" id="cb64-9" data-line-number="9">i &lt;-<span class="st"> </span><span class="kw">apply</span>(host_inf<span class="op">$</span>lik.anc, <span class="dv">1</span>, which.max)</div>
+<div class="sourceLine" id="cb64-10" data-line-number="10">host.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">node=</span><span class="dv">1</span><span class="op">:</span><span class="kw">Nnode</span>(phangorn<span class="op">@</span>phylo, <span class="dt">internal.only=</span>F), </div>
+<div class="sourceLine" id="cb64-11" data-line-number="11">                      <span class="dt">host=</span><span class="kw">c</span>(host, <span class="kw">sort</span>(<span class="kw">unique</span>(host))[i]))</div>
+<div class="sourceLine" id="cb64-12" data-line-number="12">phangorn<span class="op">@</span>extraInfo &lt;-<span class="st"> </span>host.df</div>
+<div class="sourceLine" id="cb64-13" data-line-number="13"><span class="kw">ggtree</span>(phangorn) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>host)) <span class="op">+</span><span class="st"> </span></div>
+<div class="sourceLine" id="cb64-14" data-line-number="14"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="kw">c</span>(.<span class="dv">25</span>, <span class="fl">.85</span>))</div></code></pre>
+
+<p>Host information was extracted from taxa name and ancestral hosts were estimated by <code>ace</code> function defined in <em>ape</em> package <span class="citation">(Paradis, Claude, and Strimmer <a href="#ref-paradis_ape_2004">2004</a>)</span> using maximum likelihood. Then using <em>ggtree</em> was used to visualize circles colored by the host information.</p>
+
+
+<p><img src="ggtree-book_files/figure-html4/ptree-1.png" title="<strong>Example of integrating <em>ggtree</em> in analysis pipeline.</strong> A phylogenetic tree of H3 influenza viruses built by <em>RAxML</em>. Ancestral sequences were inferred by <em>phangorn</em> and ancestral host information estimated by <em>ape</em>. The <em>ggtree</em> allows integrating information for visualization and further analysis. The tree was annotated by symbolic circles colored by host information as in the legend at top right." alt="<strong>Example of integrating <em>ggtree</em> in analysis pipeline.</strong> A phylogenetic tree of H3 influenza viruses built by <em>RAxML</em>. Ancestral sequences were inferred by <em>phangorn</em> and ancestral host information estimated by <em>ape</em>. The <em>ggtree</em> allows integrating information for visualization and further analysis. The tree was annotated by symbolic circles colored by host information as in the legend at top right." width="85%"  /></p>
+<p>The <em>ggtree</em> can be integrated into analysis pipeline as demonstrated in this example and allows different diverse data sources to be combined into a tree object. As illustrated in this example, host information and ancestral sequences were stored in the tree object. Thereafter <em>ggtree</em> allows further comparison and analysis. For instance, users can associate amino acid substitution with host jump as demonstrated in Figure <a href="#fig:h3subs"><strong>??</strong></a>. Some sites (around position of 400) are conservative across different species and some sites (around position of 20) are frequently mutated especially for host jump to mallard (Figure <a href="#fig:h3subs"><strong>??</strong></a>A). Interestingly, mutations co-occurred with chicken-to-duck transmission tend to cluster in the HA global head; whereas the mutations distributed over the cytoplasmic tail of the HA are often leading to mallard transmission especially for teal-to-mallard and duck-to-mallard transmissions (Figure <a href="#fig:h3subs"><strong>??</strong></a>B). These results could direct the further experimental investigations of these markers, such as through reverse genetic studies.</p>
+
+
+<p><img src="ggtree-book_files/figure-html4/h3subs-1.png" title="<strong>Amino acid substitution preferences.</strong> Different locations have different mutation frequencies. Mutations that lead to host jump have different preferences on mutation sites." alt="<strong>Amino acid substitution preferences.</strong> Different locations have different mutation frequencies. Mutations that lead to host jump have different preferences on mutation sites." width="864"  /></p>
+</div>
+</div>
+<div id="performance-comparison-with-other-tree-related-packages" class="section level3">
+<h3><span class="header-section-number">4.3.8</span> Performance comparison with other tree-related packages</h3>
+<!-- Compare run time, show figure, and put the code to supplemental -->
+<p>Visualization and annotation of phylogenetic trees are possible thanks to many different packages. Especially in <em>ape</em> <span class="citation">(Paradis, Claude, and Strimmer <a href="#ref-paradis_ape_2004">2004</a>)</span> and <em>phytools</em> <span class="citation">(Revell <a href="#ref-revell_phytools_2012">2012</a>)</span>, which provide many features of tree manipulation and visualization in base plotting system. The <em>ggtree</em> package brings various capabilities of phylogenetic visualization and annotation to the <em>ggplot2</em> plotting system with high level of customizability possible thanks to the object-oriented approach of graphic and data communication. <em>OutbreakTools</em> <span class="citation">(Jombart et al. <a href="#ref-jombart_outbreaktools_2014">2014</a>)</span> and <em>phyloseq</em> <span class="citation">(McMurdie and Holmes <a href="#ref-mcmurdie_phyloseq_2013">2013</a>)</span> also implemented tree view functions using <em>ggplot2</em> for presenting data from epidemiology and microbiome respectively. A comprehensive comparison of different features available in these packages can be found in Table <a href="#tab:tvc"><strong>??</strong></a>. Here I present the benchmark performance of these packages. A random tree with 1000 leaves were used for basic tree visualization as shown in Figure <a href="#fig:bm"><strong>??</strong></a>. Basically <em>ggtree</em> and <em>phyloseq</em> are two most robust and fastest packages for viewing phylogenetic trees.</p>
+
+
+<p><img src="ggtree-book_files/figure-html4/bm-1.png" title="<strong>Run time comparison for basic tree visualization.</strong> Tree topology visualization with/without taxa name." alt="<strong>Run time comparison for basic tree visualization.</strong> Tree topology visualization with/without taxa name." width="100%"  /></p>
+<p><em>OutbreakTooks</em> and <em>phyloseq</em> defined their own classes to store tree objects and specific data from epidemiology and microbiome respectively. <em>OutbreakTools</em> only works with <code>obkData</code> objects, while <em>phyloseq</em> works with <code>phylo</code> and <code>phyloseq</code> objects. As <em>OutbreakTools</em> cannot view <code>phylo</code> object, it was not incorporated in run time comparison of viewing phylogenetic trees. Although <em>phyloseq</em> can view <code>phylo</code> object, it lacks capability of annotating a phylogenetic tree with user data. To compare the performance of phylogenetic tree annotation, here I used <em>ape</em> and <em>ggtree</em> to reproduce examples presented in <em>OutbreakTools</em> and <em>phyloseq</em> vignettes. Noteably, <code>S4</code> classes including <code>obkData</code> and <code>phylose</code> defined in <em>OutbreakTools</em> and <em>phyloseq</em> are also supported by <em>ggtree</em> and users can use <code>+</code> operator to add related annotation layers. As demonstrated in Figure <a href="#fig:xbm"><strong>??</strong></a>, <em>ape</em> is the fastest package for tree annotation and <em>ggtree</em> outperform <em>phyloseq</em> and <em>OutbreakTools</em>.</p>
+
+
+<p><img src="ggtree-book_files/figure-html4/xbm-1.png" title="<strong>Run Time comparison for tree annotation.</strong> Reproducing tree annotation example of <em>OutbreakTools</em> and <em>phyloseq</em> using <em>ape</em> and <em>ggtree</em>." alt="<strong>Run Time comparison for tree annotation.</strong> Reproducing tree annotation example of <em>OutbreakTools</em> and <em>phyloseq</em> using <em>ape</em> and <em>ggtree</em>." width="768"  /></p>
+<p>To further compare visualizing phylogenetic trees with different numbers of leaves, here I used random trees with leaves ranging from 10 to 1000 with step by 10. As illustrated in Figure <a href="#fig:bm2"><strong>??</strong></a>, <em>ape</em> and <em>phytools</em> are faster when trees are small while <em>ggtree</em> and <em>phyloseq</em> perform better with large tree.</p>
+
+
+<p><img src="ggtree-book_files/figure-html4/bm2-1.png" title="<strong>Run time of viewing tree with different numbers of leaves.</strong> The slowest time to view a phylogenetic tree with 1000 leaves is only 1 second. All these tools are fast enough for ordinary usages." alt="<strong>Run time of viewing tree with different numbers of leaves.</strong> The slowest time to view a phylogenetic tree with 1000 leaves is only 1 second. All these tools are fast enough for ordinary usages." width="576"  /></p>
+<p>The benchmark was performed on iMac 3.2G Intel Core i5 with 16GB memory running OS X EI Capitan. Source code to reproduce benchmark results are presented in Figure <a href="#fig:sbm"><strong>??</strong></a>, <a href="#fig:sobm"><strong>??</strong></a>, <a href="#fig:spbm"><strong>??</strong></a> and <a href="#fig:sbm2"><strong>??</strong></a>. In the speed tests of <em>ggtree</em> and other packages using small to moderate size, <em>ape</em> and <em>phytools</em> are faster than <em>ggtree</em> and <em>phyloseq</em>. While for large tree, <em>ggtree</em> and <em>phyloseq</em> is faster than <em>ape</em> and <em>phytools</em>. For simple tree without annotation, <em>phyloseq</em> is faster than <em>ggtree</em>, while when annotating tree with multiple layers, <em>ggtree</em> is more efficient than both <em>OutbreakTools</em> and <em>phyloseq</em>. In addition, <em>ggtree</em> is a general tools that designed for tree annotation, while <em>OutbreakTools</em> and <em>phyloseq</em> are implemented for specific domain that lack of many features for general purpose of tree annotation. <em>ggtree</em> also provide grammar of graphic that are intuitive, easy to learn and allows high level of customization that are not available in other packages. In general, the performance of <em>ggtree</em> is more stable with different size of trees and different layers of annotation. The <em>ggtree</em> run fast in most of the tree visualization and annotation problems especially excels at large tree visualization and complex tree annotation.</p>
+</div>
+</div>
+<div id="discussion-1" class="section level2">
+<h2><span class="header-section-number">4.4</span> Discussion</h2>
+<p>Creating a tree figure annotated with associated information (from experimental analyses, evolutionary inferences, <em>etc.</em>) is an important part of research on molecular evolution. Most of the tree viewing software lack the utilities to incorporate data from multiple external sources or by parsing files generated by other analysis programs/packages. <em>FigTree</em> is one of the commonly used software for tree visualization and annotation, whereas it mainly supports parsing <em>BEAST</em> output and not from other tools to annotate the tree. <em>FigTree</em> is a typical viewer in this field that designed for specific data type and implemented pre-defined annotation for specific needs.</p>
+<p>Tools for visualizing phylogenetic trees are proliferating. Producing a publication-ready informative tree figure typically involves a series of annotation steps and requires several software packages to generate a static image as an end product. Such static image doesn’t contain choices of selecting features (<em>e.g.</em> ancestral state) that used to render the tree (<em>e.g.</em> as text label or branch width). This process is often one-way that has no route to return to previous annotation steps. It is often difficult to modify or reuse the underlying annotation information in other contexts (<em>e.g.</em>, add a new layer of clade support value on the same tree). Therefore, repeated creations of similar complex tree figures for analysis or publication become extremely time-consuming.</p>
+<p>Existing workflows are suboptimal from the standpoint of sharing and reuse. Tree visualization and annotation should contain a serialize compositions that preserve the selection and annotation in a portable format. This format can be modified (<em>e.g.</em>, change color, add new layer <em>etc.</em>) and rendering the tree with annotation when needed. This way will make tree annotation more portable and transparent. The <em>ggtree</em> is designed to solve these issues. It can utilize evolutionary data from different tree objects (<em>e.g.</em>, those parsed by <em>treeio</em>, see <a href="chapter-treeio.html#chapter-treeio">Chapter 2</a>) as well as import other associated experimental data from external files, so that various sources and types of data can be displayed on a tree for comparison and further analyses. The <em>ggtree</em> also supports visualization of tree objects defined by other <code>R</code> packages so that <em>ggtree</em> can be easily integrated into existing analysis pipelines. For example, <code>phyloseq</code> tree object is supported by <em>ggtree</em> and microbiome data can be used to annotate the tree using <em>ggtree</em>.</p>
+<p>The <em>ggtree</em> extends <em>ggplot2</em> graphic system and allows creating separate geometric layers that can be freely combined, removed and rearranged to support diverse but convenient ways of tree manipulation and visualization. Layers defined in <em>ggtree</em> are not for specific purpose but serve as building blocks to annotate trees to meet users’ own needs in their favorite way.</p>
+<p>The <em>ggtree</em> generates an image file of tree figures when users render the output object to an image file. Instead of producing an image file that can hardly be modified and reused, <em>ggtree</em> outputs a <em>ggtree</em> object that contains a serialized data that preserve the tree and associated data with layers of different data for tree tree annotation. These data (including tree, annotation data and layers) can be manipulated to modify tree, reuse data and adding/modifying layers of tree annotation.</p>
+<p>The <em>ggtree</em> fits the ecosystem of R community as it supports most of the tree objects defined by the community and can be easily integrated to existing workflows. It also works with other packages to enhance its interoperability, for example, <em>ggtree</em> works with <em>ggbio</em> <span class="citation">(Yin, Cook, and Lawrence <a href="#ref-yin_ggbio:_2012">2012</a>)</span> package to visualize phylogenetic tree with genomic features and works with <em>ggseqlogo</em><a href="chapter-ggtree.html#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> package to annotate phylogenetic tree with sequence logo (Figure <a href="#fig:emogg"><strong>??</strong></a>).</p>
+<p>Using <em>ggtree</em>, large phylogenetic tree figures with complex annotations can be more easily and consistently generated. This is particular useful for those studying the virus genome and evolution. The recent rise of the field ‘phylodynamics’ has been widely applied in influenza research, and many studies in literature were trying to identify the association between the dynamic virus phenotypes and evolution <span class="citation">(Loverdo and Lloyd-Smith <a href="#ref-loverdo_inter-generational_2013">2013</a>, <span class="citation">Koelle et al. (<a href="#ref-koelle_epochal_2006">2006</a>)</span>)</span>. Our <em>ggtree</em> could become an essential platform for high-level analysis of the data resulting from different types of evolutionary analyses.</p>
+
+
+
+<div id="refs" class="references">
+<div>
+<p>Berger, Simon A., Denis Krompass, and Alexandros Stamatakis. 2011. “Performance, Accuracy, and Web Server for Evolutionary Placement of Short Sequence Reads Under Maximum Likelihood.” <em>Systematic Biology</em>, March, syr010. doi:<a href="https://doi.org/10.1093/sysbio/syr010">10.1093/sysbio/syr010</a>.</p>
+</div>
+<div>
+<p>Bosi, Emanuele, Jonathan M. Monk, Ramy K. Aziz, Marco Fondi, Victor Nizet, and Bernhard Ø. Palsson. 2016. “Comparative Genome-Scale Modelling of Staphylococcus Aureus Strains Identifies Strain-Specific Metabolic Capabilities Linked to Pathogenicity.” <em>Proceedings of the National Academy of Sciences of the United States of America</em> 113 (26): E3801–E3809. doi:<a href="https://doi.org/10.1073/pnas.1523199113">10.1073/pnas.1523199113</a>.</p>
+</div>
+<div>
+<p>Bouckaert, Remco, Joseph Heled, Denise Kühnert, Tim Vaughan, Chieh-Hsi Wu, Dong Xie, Marc A. Suchard, Andrew Rambaut, and Alexei J. Drummond. 2014. “BEAST 2: A Software Platform for Bayesian Evolutionary Analysis.” <em>PLoS Comput Biol</em> 10 (4): e1003537. doi:<a href="https://doi.org/10.1371/journal.pcbi.1003537">10.1371/journal.pcbi.1003537</a>.</p>
+</div>
+<div>
+<p>Boussau, Bastien, Gergely J. Szöllősi, Laurent Duret, Manolo Gouy, Eric Tannier, and Vincent Daubin. 2013. “Genome-Scale Coestimation of Species and Gene Trees.” <em>Genome Research</em> 23 (2): 323–30. doi:<a href="https://doi.org/10.1101/gr.141978.112">10.1101/gr.141978.112</a>.</p>
+</div>
+<div>
+<p>Callahan, Benjamin J., Paul J. McMurdie, Michael J. Rosen, Andrew W. Han, Amy Jo A. Johnson, and Susan P. Holmes. 2016. “DADA2: High-Resolution Sample Inference from Illumina Amplicon Data.” <em>Nature Methods</em> 13 (7): 581–83. doi:<a href="https://doi.org/10.1038/nmeth.3869">10.1038/nmeth.3869</a>.</p>
+</div>
+<div>
+<p>Chevenet, François, Christine Brun, Anne-Laure Bañuls, Bernard Jacq, and Richard Christen. 2006. “TreeDyn: Towards Dynamic Graphics and Annotations for Analyses of Trees.” <em>BMC Bioinformatics</em> 7 (October): 439. doi:<a href="https://doi.org/10.1186/1471-2105-7-439">10.1186/1471-2105-7-439</a>.</p>
+</div>
+<div>
+<p>Edgar, Robert C. 2004. “MUSCLE: Multiple Sequence Alignment with High Accuracy and High Throughput.” <em>Nucleic Acids Research</em> 32 (5): 1792–7. doi:<a href="https://doi.org/10.1093/nar/gkh340">10.1093/nar/gkh340</a>.</p>
+</div>
+<div>
+<p>Felsenstein, Joseph. 1989. “PHYLIP - Phylogeny Inference Package (Version 3.2).” <em>Cladistics</em> 5: 164–66.</p>
+</div>
+<div>
+<p>Gentleman, Robert C, Vincent J Carey, Douglas M Bates, Ben Bolstad, Marcel Dettling, Sandrine Dudoit, Byron Ellis, et al. 2004. “Bioconductor: Open Software Development for Computational Biology and Bioinformatics.” <em>Genome Biology</em> 5 (10): R80. doi:<a href="https://doi.org/10.1186/gb-2004-5-10-r80">10.1186/gb-2004-5-10-r80</a>.</p>
+</div>
+<div>
+<p>Goldman, N., and Z. Yang. 1994. “A Codon-Based Model of Nucleotide Substitution for Protein-Coding DNA Sequences.” <em>Molecular Biology and Evolution</em> 11 (5): 725–36.</p>
+</div>
+<div>
+<p>Gupta, Ankit, and Vineet K Sharma. 2015. “Using the Taxon-Specific Genes for the Taxonomic Classification of Bacterial Genomes.” <em>BMC Genomics</em> 16 (1). doi:<a href="https://doi.org/10.1186/s12864-015-1542-0">10.1186/s12864-015-1542-0</a>.</p>
+</div>
+<div>
+<p>He, Ya-Qing, Long Chen, Wen-Bo Xu, Hong Yang, Han-Zhong Wang, Wen-Ping Zong, Hui-Xia Xian, et al. 2013. “Emergence, Circulation, and Spatiotemporal Phylogenetic Analysis of Coxsackievirus A6- and Coxsackievirus A10-Associated Hand, Foot, and Mouth Disease Infections from 2008 to 2012 in Shenzhen, China.” <em>Journal of Clinical Microbiology</em> 51 (11): 3560–6. doi:<a href="https://doi.org/10.1128/JCM.01231-13">10.1128/JCM.01231-13</a>.</p>
+</div>
+<div>
+<p>He, Zilong, Huangkai Zhang, Shenghan Gao, Martin J. Lercher, Wei-Hua Chen, and Songnian Hu. 2016. “Evolview V2: An Online Visualization and Management Tool for Customized and Annotated Phylogenetic Trees.” <em>Nucleic Acids Research</em> 44 (W1): W236–241. doi:<a href="https://doi.org/10.1093/nar/gkw370">10.1093/nar/gkw370</a>.</p>
+</div>
+<div>
+<p>Höhna, Sebastian, Michael J. Landis, Tracy A. Heath, Bastien Boussau, Nicolas Lartillot, Brian R. Moore, John P. Huelsenbeck, and Fredrik Ronquist. 2016. “RevBayes: Bayesian Phylogenetic Inference Using Graphical Models and an Interactive Model-Specification Language.” <em>Systematic Biology</em> 65 (4): 726–36. doi:<a href="https://doi.org/10.1093/sysbio/syw021">10.1093/sysbio/syw021</a>.</p>
+</div>
+<div>
+<p>Huelsenbeck, J. P., and F. Ronquist. 2001. “MRBAYES: Bayesian Inference of Phylogenetic Trees.” <em>Bioinformatics (Oxford, England)</em> 17 (8): 754–55.</p>
+</div>
+<div>
+<p>Huson, Daniel H., and Celine Scornavacca. 2012. “Dendroscope 3: An Interactive Tool for Rooted Phylogenetic Trees and Networks.” <em>Systematic Biology</em> 61 (6): 1061–7. doi:<a href="https://doi.org/10.1093/sysbio/sys062">10.1093/sysbio/sys062</a>.</p>
+</div>
+<div>
+<p>Jombart, Thibaut, David M. Aanensen, Marc Baguelin, Paul Birrell, Simon Cauchemez, Anton Camacho, Caroline Colijn, et al. 2014. “OutbreakTools: A New Platform for Disease Outbreak Analysis Using the R Software.” <em>Epidemics</em> 7 (June): 28–34. doi:<a href="https://doi.org/10.1016/j.epidem.2014.04.003">10.1016/j.epidem.2014.04.003</a>.</p>
+</div>
+<div>
+<p>Koelle, Katia, Sarah Cobey, Bryan Grenfell, and Mercedes Pascual. 2006. “Epochal Evolution Shapes the Phylodynamics of Interpandemic Influenza A (H3N2) in Humans.” <em>Science (New York, N.Y.)</em> 314 (5807): 1898–1903. doi:<a href="https://doi.org/10.1126/science.1132745">10.1126/science.1132745</a>.</p>
+</div>
+<div>
+<p>Kuczynski, Justin, Jesse Stombaugh, William Anton Walters, Antonio González, J. Gregory Caporaso, and Rob Knight. 2011. “Using QIIME to Analyze 16S rRNA Gene Sequences from Microbial Communities.” <em>Current Protocols in Bioinformatics / Editoral Board, Andreas D. Baxevanis ... [et Al.]</em> CHAPTER (December): Unit10.7. doi:<a href="https://doi.org/10.1002/0471250953.bi1007s36">10.1002/0471250953.bi1007s36</a>.</p>
+</div>
+<div>
+<p>Kunin, Victor, and Philip Hugenholtz. 2010. “PyroTagger : A Fast , Accurate Pipeline for Analysis of rRNA Amplicon Pyrosequence Data.” <em>The Open Journal</em>, 1–8. <a href="http://www.theopenjournal.org/toj_articles/1" class="uri">http://www.theopenjournal.org/toj_articles/1</a>.</p>
+</div>
+<div>
+<p>Lam, Tommy Tsan-Yuk, Chung-Chau Hon, and Julian W. Tang. 2010. “Use of Phylogenetics in the Molecular Epidemiology and Evolutionary Studies of Viral Infections.” <em>Critical Reviews in Clinical Laboratory Sciences</em> 47 (1): 5–49. doi:<a href="https://doi.org/10.3109/10408361003633318">10.3109/10408361003633318</a>.</p>
+</div>
+<div>
+<p>Lam, Tommy Tsan-Yuk, Chung-Chau Hon, Philippe Lemey, Oliver G. Pybus, Mang Shi, Hein Min Tun, Jun Li, Jingwei Jiang, Edward C. Holmes, and Frederick Chi-Ching Leung. 2012. “Phylodynamics of H5N1 Avian Influenza Virus in Indonesia.” <em>Molecular Ecology</em> 21 (12): 3062–77. doi:<a href="https://doi.org/10.1111/j.1365-294X.2012.05577.x">10.1111/j.1365-294X.2012.05577.x</a>.</p>
+</div>
+<div>
+<p>Lam, Tommy Tsan-Yuk, Boping Zhou, Jia Wang, Yujuan Chai, Yongyi Shen, Xinchun Chen, Chi Ma, et al. 2015. “Dissemination, Divergence and Establishment of H7N9 Influenza Viruses in China.” <em>Nature</em> 522 (7554): 102–5. doi:<a href="https://doi.org/10.1038/nature14348">10.1038/nature14348</a>.</p>
+</div>
+<div>
+<p>Letunic, Ivica, and Peer Bork. 2007. “Interactive Tree of Life (iTOL): An Online Tool for Phylogenetic Tree Display and Annotation.” <em>Bioinformatics</em> 23 (1): 127–28. doi:<a href="https://doi.org/10.1093/bioinformatics/btl529">10.1093/bioinformatics/btl529</a>.</p>
+</div>
+<div>
+<p>Liang, Huyi, Tommy Tsan-Yuk Lam, Xiaohui Fan, Xinchun Chen, Yu Zeng, Ji Zhou, Lian Duan, et al. 2014. “Expansion of Genotypic Diversity and Establishment of 2009 H1N1 Pandemic-Origin Internal Genes in Pigs in China.” <em>Journal of Virology</em>, July, JVI.01327–14. doi:<a href="https://doi.org/10.1128/JVI.01327-14">10.1128/JVI.01327-14</a>.</p>
+</div>
+<div>
+<p>Loverdo, Claude, and James O. Lloyd-Smith. 2013. “INTER-GENERATIONAL PHENOTYPIC MIXING IN VIRAL EVOLUTION.” <em>Evolution; International Journal of Organic Evolution</em> 67 (6): 1815–22. doi:<a href="https://doi.org/10.1111/evo.12048">10.1111/evo.12048</a>.</p>
+</div>
+<div>
+<p>Maddison, David R., David L. Swofford, Wayne P. Maddison, and David Cannatella. 1997. “Nexus: An Extensible File Format for Systematic Information.” <em>Systematic Biology</em> 46 (4): 590–621. doi:<a href="https://doi.org/10.1093/sysbio/46.4.590">10.1093/sysbio/46.4.590</a>.</p>
+</div>
+<div>
+<p>Matsen, Frederick A., Noah G. Hoffman, Aaron Gallagher, and Alexandros Stamatakis. 2012. “A Format for Phylogenetic Placements.” <em>PLOS ONE</em> 7 (2): e31009. doi:<a href="https://doi.org/10.1371/journal.pone.0031009">10.1371/journal.pone.0031009</a>.</p>
+</div>
+<div>
+<p>Matsen, Frederick A., Robin B. Kodner, and E Virginia Armbrust. 2010. “Pplacer: Linear Time Maximum-Likelihood and Bayesian Phylogenetic Placement of Sequences onto a Fixed Reference Tree.” <em>BMC Bioinformatics</em> 11: 538. doi:<a href="https://doi.org/10.1186/1471-2105-11-538">10.1186/1471-2105-11-538</a>.</p>
+</div>
+<div>
+<p>McMurdie, Paul J., and Susan Holmes. 2013. “Phyloseq: An R Package for Reproducible Interactive Analysis and Graphics of Microbiome Census Data.” <em>PloS One</em> 8 (4): e61217. doi:<a href="https://doi.org/10.1371/journal.pone.0061217">10.1371/journal.pone.0061217</a>.</p>
+</div>
+<div>
+<p>Neher, Richard A., Trevor Bedford, Rodney S. Daniels, Colin A. Russell, and Boris I. Shraiman. 2016. “Prediction, Dynamics, and Visualization of Antigenic Phenotypes of Seasonal Influenza Viruses.” <em>Proceedings of the National Academy of Sciences</em> 113 (12): E1701–E1709. doi:<a href="https://doi.org/10.1073/pnas.1525578113">10.1073/pnas.1525578113</a>.</p>
+</div>
+<div>
+<p>Page, Roderic D. M. 2002. “Visualizing Phylogenetic Trees Using TreeView.” <em>Current Protocols in Bioinformatics</em> Chapter 6 (August): Unit 6.2. doi:<a href="https://doi.org/10.1002/0471250953.bi0602s01">10.1002/0471250953.bi0602s01</a>.</p>
+</div>
+<div>
+<p>Paradis, Emmanuel, Julien Claude, and Korbinian Strimmer. 2004. “APE: Analyses of Phylogenetics and Evolution in R Language.” <em>Bioinformatics</em> 20 (2): 289–90. doi:<a href="https://doi.org/10.1093/bioinformatics/btg412">10.1093/bioinformatics/btg412</a>.</p>
+</div>
+<div>
+<p>Parrish, Colin R., Pablo R. Murcia, and Edward C. Holmes. 2015. “Influenza Virus Reservoirs and Intermediate Hosts: Dogs, Horses, and New Possibilities for Influenza Virus Exposure of Humans.” <em>Journal of Virology</em> 89 (6): 2990–4. doi:<a href="https://doi.org/10.1128/JVI.03146-14">10.1128/JVI.03146-14</a>.</p>
+</div>
+<div>
+<p>Pond, Sergei L. Kosakovsky, Simon D. W. Frost, and Spencer V. Muse. 2005. “HyPhy: Hypothesis Testing Using Phylogenies.” <em>Bioinformatics (Oxford, England)</em> 21 (5): 676–79. doi:<a href="https://doi.org/10.1093/bioinformatics/bti079">10.1093/bioinformatics/bti079</a>.</p>
+</div>
+<div>
+<p>R Core Team. 2016. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div>
+<p>Retief, J. D. 2000. “Phylogenetic Analysis Using PHYLIP.” <em>Methods in Molecular Biology (Clifton, N.J.)</em> 132: 243–58.</p>
+</div>
+<div>
+<p>Revell, Liam J. 2012. “Phytools: An R Package for Phylogenetic Comparative Biology (and Other Things).” <em>Methods in Ecology and Evolution</em> 3 (2): 217–23. doi:<a href="https://doi.org/10.1111/j.2041-210X.2011.00169.x">10.1111/j.2041-210X.2011.00169.x</a>.</p>
+</div>
+<div>
+<p>Sanderson, Michael J. 2003. “R8s: Inferring Absolute Rates of Molecular Evolution and Divergence Times in the Absence of a Molecular Clock.” <em>Bioinformatics</em> 19 (2): 301–2. doi:<a href="https://doi.org/10.1093/bioinformatics/19.2.301">10.1093/bioinformatics/19.2.301</a>.</p>
+</div>
+<div>
+<p>Schliep, Klaus Peter. 2011. “Phangorn: Phylogenetic Analysis in R.” <em>Bioinformatics</em> 27 (4): 592–93. doi:<a href="https://doi.org/10.1093/bioinformatics/btq706">10.1093/bioinformatics/btq706</a>.</p>
+</div>
+<div>
+<p>Schloss, Patrick D., Sarah L. Westcott, Thomas Ryabin, Justine R. Hall, Martin Hartmann, Emily B. Hollister, Ryan A. Lesniewski, et al. 2009. “Introducing Mothur: Open-Source, Platform-Independent, Community-Supported Software for Describing and Comparing Microbial Communities.” <em>Applied and Environmental Microbiology</em> 75 (23): 7537–41. doi:<a href="https://doi.org/10.1128/AEM.01541-09">10.1128/AEM.01541-09</a>.</p>
+</div>
+<div>
+<p>Schmidt, Heiko A., Korbinian Strimmer, Martin Vingron, and Arndt von Haeseler. 2002. “TREE-PUZZLE: Maximum Likelihood Phylogenetic Analysis Using Quartets and Parallel Computing.” <em>Bioinformatics (Oxford, England)</em> 18 (3): 502–4.</p>
+</div>
+<div>
+<p>Schön, Isa, Rylan Shearn, Koen Martens, Annette Koenders, and Stuart Halse. 2015. “Age and Origin of Australian Bennelongia (Crustacea, Ostracoda).” <em>Hydrobiologia</em> 750 (1): 125–46. doi:<a href="https://doi.org/10.1007/s10750-014-2159-z">10.1007/s10750-014-2159-z</a>.</p>
+</div>
+<div>
+<p>Stamatakis, Alexandros. 2014. “RAxML Version 8: A Tool for Phylogenetic Analysis and Post-Analysis of Large Phylogenies.” <em>Bioinformatics</em> 30 (9): 1312–3. doi:<a href="https://doi.org/10.1093/bioinformatics/btu033">10.1093/bioinformatics/btu033</a>.</p>
+</div>
+<div>
+<p>Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer. <a href="http://ggplot2.org" class="uri">http://ggplot2.org</a>.</p>
+</div>
+<div>
+<p>Wilgenbusch, James C., and David Swofford. 2003. “Inferring Evolutionary Trees with PAUP*.” <em>Current Protocols in Bioinformatics</em> Chapter 6 (February): Unit 6.4. doi:<a href="https://doi.org/10.1002/0471250953.bi0604s00">10.1002/0471250953.bi0604s00</a>.</p>
+</div>
+<div>
+<p>Wilkinson, Leland, D. Wills, D. Rope, A. Norton, and R. Dubbs. 2005. <em>The Grammar of Graphics</em>. 2nd edition. New York: Springer.</p>
+</div>
+<div>
+<p>Yang, Ziheng. 2007. “PAML 4: Phylogenetic Analysis by Maximum Likelihood.” <em>Molecular Biology and Evolution</em> 24 (8): 1586–91. doi:<a href="https://doi.org/10.1093/molbev/msm088">10.1093/molbev/msm088</a>.</p>
+</div>
+<div>
+<p>Yin, Tengfei, Dianne Cook, and Michael Lawrence. 2012. “Ggbio: An R Package for Extending the Grammar of Graphics for Genomic Data.” <em>Genome Biology</em> 13 (8): R77. doi:<a href="https://doi.org/10.1186/gb-2012-13-8-r77">10.1186/gb-2012-13-8-r77</a>.</p>
+</div>
+<div>
+<p>Zmasek, Christian M., and Sean R. Eddy. 2001. “ATV: Display and Manipulation of Annotated Phylogenetic Trees.” <em>Bioinformatics</em> 17 (4): 383–84. doi:<a href="https://doi.org/10.1093/bioinformatics/17.4.383">10.1093/bioinformatics/17.4.383</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="http://evolution.genetics.washington.edu/phylip/newick_doc.html" class="uri">http://evolution.genetics.washington.edu/phylip/newick_doc.html</a><a href="chapter-treeio.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p><a href="http://www.genetics.wustl.edu/eddy/forester/NHX.html" class="uri">http://www.genetics.wustl.edu/eddy/forester/NHX.html</a><a href="chapter-treeio.html#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p><a href="https://sites.google.com/site/cmzmasek/home/software/archaeopteryx" class="uri">https://sites.google.com/site/cmzmasek/home/software/archaeopteryx</a><a href="chapter-treeio.html#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p><a href="http://biopython.org/wiki/PAML" class="uri">http://biopython.org/wiki/PAML</a><a href="chapter-treeio.html#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p><a href="http://bioperl.org/howtos/PAML_HOWTO.html" class="uri">http://bioperl.org/howtos/PAML_HOWTO.html</a><a href="chapter-treeio.html#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p><a href="https://bioconductor.org/packages/devel/bioc/vignettes/ggtree/inst/doc/advanceTreeAnnotation.html" class="uri">https://bioconductor.org/packages/devel/bioc/vignettes/ggtree/inst/doc/advanceTreeAnnotation.html</a><a href="chapter-treeio.html#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p><a href="http://tree.bio.ed.ac.uk/software/figtree/" class="uri">http://tree.bio.ed.ac.uk/software/figtree/</a><a href="chapter-ggtree.html#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn8"><p><a href="http://www.cbs.dtu.dk/services/NetNGlyc/" class="uri">http://www.cbs.dtu.dk/services/NetNGlyc/</a><a href="chapter-ggtree.html#fnref8" class="footnote-back">↩</a></p></li>
+<li id="fn9"><p><a href="https://bioconductor.org/packages/release/bioc/vignettes/ggtree/inst/doc/ggtree.html" class="uri">https://bioconductor.org/packages/release/bioc/vignettes/ggtree/inst/doc/ggtree.html</a><a href="chapter-ggtree.html#fnref9" class="footnote-back">↩</a></p></li>
+<li id="fn10"><p><a href="https://github.com/omarwagih/ggseqlogo" class="uri">https://github.com/omarwagih/ggseqlogo</a><a href="chapter-ggtree.html#fnref10" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-page_visualizing_2002">
+<p>Page, Roderic D. M. 2002. “Visualizing Phylogenetic Trees Using TreeView.” <em>Current Protocols in Bioinformatics</em> Chapter 6 (August): Unit 6.2. doi:<a href="https://doi.org/10.1002/0471250953.bi0602s01">10.1002/0471250953.bi0602s01</a>.</p>
+</div>
+<div id="ref-chevenet_treedyn:_2006">
+<p>Chevenet, François, Christine Brun, Anne-Laure Bañuls, Bernard Jacq, and Richard Christen. 2006. “TreeDyn: Towards Dynamic Graphics and Annotations for Analyses of Trees.” <em>BMC Bioinformatics</em> 7 (October): 439. doi:<a href="https://doi.org/10.1186/1471-2105-7-439">10.1186/1471-2105-7-439</a>.</p>
+</div>
+<div id="ref-huson_dendroscope_2012">
+<p>Huson, Daniel H., and Celine Scornavacca. 2012. “Dendroscope 3: An Interactive Tool for Rooted Phylogenetic Trees and Networks.” <em>Systematic Biology</em> 61 (6): 1061–7. doi:<a href="https://doi.org/10.1093/sysbio/sys062">10.1093/sysbio/sys062</a>.</p>
+</div>
+<div id="ref-he_evolview_2016">
+<p>He, Zilong, Huangkai Zhang, Shenghan Gao, Martin J. Lercher, Wei-Hua Chen, and Songnian Hu. 2016. “Evolview V2: An Online Visualization and Management Tool for Customized and Annotated Phylogenetic Trees.” <em>Nucleic Acids Research</em> 44 (W1): W236–241. doi:<a href="https://doi.org/10.1093/nar/gkw370">10.1093/nar/gkw370</a>.</p>
+</div>
+<div id="ref-letunic_interactive_2007">
+<p>Letunic, Ivica, and Peer Bork. 2007. “Interactive Tree of Life (iTOL): An Online Tool for Phylogenetic Tree Display and Annotation.” <em>Bioinformatics</em> 23 (1): 127–28. doi:<a href="https://doi.org/10.1093/bioinformatics/btl529">10.1093/bioinformatics/btl529</a>.</p>
+</div>
+<div id="ref-rstats">
+<p>R Core Team. 2016. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-gentleman_bioconductor_2004">
+<p>Gentleman, Robert C, Vincent J Carey, Douglas M Bates, Ben Bolstad, Marcel Dettling, Sandrine Dudoit, Byron Ellis, et al. 2004. “Bioconductor: Open Software Development for Computational Biology and Bioinformatics.” <em>Genome Biology</em> 5 (10): R80. doi:<a href="https://doi.org/10.1186/gb-2004-5-10-r80">10.1186/gb-2004-5-10-r80</a>.</p>
+</div>
+<div id="ref-wickham_ggplot2_2016">
+<p>Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer. <a href="http://ggplot2.org" class="uri">http://ggplot2.org</a>.</p>
+</div>
+<div id="ref-wilkinson_grammar_2005">
+<p>Wilkinson, Leland, D. Wills, D. Rope, A. Norton, and R. Dubbs. 2005. <em>The Grammar of Graphics</em>. 2nd edition. New York: Springer.</p>
+</div>
+<div id="ref-paradis_ape_2004">
+<p>Paradis, Emmanuel, Julien Claude, and Korbinian Strimmer. 2004. “APE: Analyses of Phylogenetics and Evolution in R Language.” <em>Bioinformatics</em> 20 (2): 289–90. doi:<a href="https://doi.org/10.1093/bioinformatics/btg412">10.1093/bioinformatics/btg412</a>.</p>
+</div>
+<div id="ref-revell_phytools_2012">
+<p>Revell, Liam J. 2012. “Phytools: An R Package for Phylogenetic Comparative Biology (and Other Things).” <em>Methods in Ecology and Evolution</em> 3 (2): 217–23. doi:<a href="https://doi.org/10.1111/j.2041-210X.2011.00169.x">10.1111/j.2041-210X.2011.00169.x</a>.</p>
+</div>
+<div id="ref-jombart_outbreaktools_2014">
+<p>Jombart, Thibaut, David M. Aanensen, Marc Baguelin, Paul Birrell, Simon Cauchemez, Anton Camacho, Caroline Colijn, et al. 2014. “OutbreakTools: A New Platform for Disease Outbreak Analysis Using the R Software.” <em>Epidemics</em> 7 (June): 28–34. doi:<a href="https://doi.org/10.1016/j.epidem.2014.04.003">10.1016/j.epidem.2014.04.003</a>.</p>
+</div>
+<div id="ref-mcmurdie_phyloseq_2013">
+<p>McMurdie, Paul J., and Susan Holmes. 2013. “Phyloseq: An R Package for Reproducible Interactive Analysis and Graphics of Microbiome Census Data.” <em>PloS One</em> 8 (4): e61217. doi:<a href="https://doi.org/10.1371/journal.pone.0061217">10.1371/journal.pone.0061217</a>.</p>
+</div>
+<div id="ref-lam_phylodynamics_2012">
+<p>Lam, Tommy Tsan-Yuk, Chung-Chau Hon, Philippe Lemey, Oliver G. Pybus, Mang Shi, Hein Min Tun, Jun Li, Jingwei Jiang, Edward C. Holmes, and Frederick Chi-Ching Leung. 2012. “Phylodynamics of H5N1 Avian Influenza Virus in Indonesia.” <em>Molecular Ecology</em> 21 (12): 3062–77. doi:<a href="https://doi.org/10.1111/j.1365-294X.2012.05577.x">10.1111/j.1365-294X.2012.05577.x</a>.</p>
+</div>
+<div id="ref-retief_phylogenetic_2000">
+<p>Retief, J. D. 2000. “Phylogenetic Analysis Using PHYLIP.” <em>Methods in Molecular Biology (Clifton, N.J.)</em> 132: 243–58.</p>
+</div>
+<div id="ref-wilgenbusch_inferring_2003">
+<p>Wilgenbusch, James C., and David Swofford. 2003. “Inferring Evolutionary Trees with PAUP*.” <em>Current Protocols in Bioinformatics</em> Chapter 6 (February): Unit 6.4. doi:<a href="https://doi.org/10.1002/0471250953.bi0604s00">10.1002/0471250953.bi0604s00</a>.</p>
+</div>
+<div id="ref-neher_prediction_2016">
+<p>Neher, Richard A., Trevor Bedford, Rodney S. Daniels, Colin A. Russell, and Boris I. Shraiman. 2016. “Prediction, Dynamics, and Visualization of Antigenic Phenotypes of Seasonal Influenza Viruses.” <em>Proceedings of the National Academy of Sciences</em> 113 (12): E1701–E1709. doi:<a href="https://doi.org/10.1073/pnas.1525578113">10.1073/pnas.1525578113</a>.</p>
+</div>
+<div id="ref-liang_expansion_2014">
+<p>Liang, Huyi, Tommy Tsan-Yuk Lam, Xiaohui Fan, Xinchun Chen, Yu Zeng, Ji Zhou, Lian Duan, et al. 2014. “Expansion of Genotypic Diversity and Establishment of 2009 H1N1 Pandemic-Origin Internal Genes in Pigs in China.” <em>Journal of Virology</em>, July, JVI.01327–14. doi:<a href="https://doi.org/10.1128/JVI.01327-14">10.1128/JVI.01327-14</a>.</p>
+</div>
+<div id="ref-kuczynski_using_2011">
+<p>Kuczynski, Justin, Jesse Stombaugh, William Anton Walters, Antonio González, J. Gregory Caporaso, and Rob Knight. 2011. “Using QIIME to Analyze 16S rRNA Gene Sequences from Microbial Communities.” <em>Current Protocols in Bioinformatics / Editoral Board, Andreas D. Baxevanis ... [et Al.]</em> CHAPTER (December): Unit10.7. doi:<a href="https://doi.org/10.1002/0471250953.bi1007s36">10.1002/0471250953.bi1007s36</a>.</p>
+</div>
+<div id="ref-schloss_introducing_2009">
+<p>Schloss, Patrick D., Sarah L. Westcott, Thomas Ryabin, Justine R. Hall, Martin Hartmann, Emily B. Hollister, Ryan A. Lesniewski, et al. 2009. “Introducing Mothur: Open-Source, Platform-Independent, Community-Supported Software for Describing and Comparing Microbial Communities.” <em>Applied and Environmental Microbiology</em> 75 (23): 7537–41. doi:<a href="https://doi.org/10.1128/AEM.01541-09">10.1128/AEM.01541-09</a>.</p>
+</div>
+<div id="ref-callahan_dada2_2016">
+<p>Callahan, Benjamin J., Paul J. McMurdie, Michael J. Rosen, Andrew W. Han, Amy Jo A. Johnson, and Susan P. Holmes. 2016. “DADA2: High-Resolution Sample Inference from Illumina Amplicon Data.” <em>Nature Methods</em> 13 (7): 581–83. doi:<a href="https://doi.org/10.1038/nmeth.3869">10.1038/nmeth.3869</a>.</p>
+</div>
+<div id="ref-kunin_pyrotagger_2010">
+<p>Kunin, Victor, and Philip Hugenholtz. 2010. “PyroTagger : A Fast , Accurate Pipeline for Analysis of rRNA Amplicon Pyrosequence Data.” <em>The Open Journal</em>, 1–8. <a href="http://www.theopenjournal.org/toj_articles/1" class="uri">http://www.theopenjournal.org/toj_articles/1</a>.</p>
+</div>
+<div id="ref-edgar_muscle_2004">
+<p>Edgar, Robert C. 2004. “MUSCLE: Multiple Sequence Alignment with High Accuracy and High Throughput.” <em>Nucleic Acids Research</em> 32 (5): 1792–7. doi:<a href="https://doi.org/10.1093/nar/gkh340">10.1093/nar/gkh340</a>.</p>
+</div>
+<div id="ref-stamatakis_raxml_2014">
+<p>Stamatakis, Alexandros. 2014. “RAxML Version 8: A Tool for Phylogenetic Analysis and Post-Analysis of Large Phylogenies.” <em>Bioinformatics</em> 30 (9): 1312–3. doi:<a href="https://doi.org/10.1093/bioinformatics/btu033">10.1093/bioinformatics/btu033</a>.</p>
+</div>
+<div id="ref-schliep_phangorn_2011">
+<p>Schliep, Klaus Peter. 2011. “Phangorn: Phylogenetic Analysis in R.” <em>Bioinformatics</em> 27 (4): 592–93. doi:<a href="https://doi.org/10.1093/bioinformatics/btq706">10.1093/bioinformatics/btq706</a>.</p>
+</div>
+<div id="ref-yin_ggbio:_2012">
+<p>Yin, Tengfei, Dianne Cook, and Michael Lawrence. 2012. “Ggbio: An R Package for Extending the Grammar of Graphics for Genomic Data.” <em>Genome Biology</em> 13 (8): R77. doi:<a href="https://doi.org/10.1186/gb-2012-13-8-r77">10.1186/gb-2012-13-8-r77</a>.</p>
+</div>
+<div id="ref-loverdo_inter-generational_2013">
+<p>Loverdo, Claude, and James O. Lloyd-Smith. 2013. “INTER-GENERATIONAL PHENOTYPIC MIXING IN VIRAL EVOLUTION.” <em>Evolution; International Journal of Organic Evolution</em> 67 (6): 1815–22. doi:<a href="https://doi.org/10.1111/evo.12048">10.1111/evo.12048</a>.</p>
+</div>
+<div id="ref-koelle_epochal_2006">
+<p>Koelle, Katia, Sarah Cobey, Bryan Grenfell, and Mercedes Pascual. 2006. “Epochal Evolution Shapes the Phylodynamics of Interpandemic Influenza A (H3N2) in Humans.” <em>Science (New York, N.Y.)</em> 314 (5807): 1898–1903. doi:<a href="https://doi.org/10.1126/science.1132745">10.1126/science.1132745</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter-treeio.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
