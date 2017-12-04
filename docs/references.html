@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ggtree: Elegant Graphics for Phylogenetic Tree Visualization and Annotation</title>
+  <meta name="description" content="ggtree: Elegant Graphics for Phylogenetic Tree Visualization and Annotation">
+  <meta name="generator" content="bookdown 0.5.10 and GitBook 2.6.7">
+
+  <meta property="og:title" content="ggtree: Elegant Graphics for Phylogenetic Tree Visualization and Annotation" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="ggtree: Elegant Graphics for Phylogenetic Tree Visualization and Annotation" />
+  
+  
+  
+
+<meta name="author" content="Guangchuang Yu">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="chapter-ggimage.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="short-introduction-to-r.html"><a href="short-introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Short introduction to R</a></li>
+<li class="chapter" data-level="2" data-path="short-introduction-to-ggplot2.html"><a href="short-introduction-to-ggplot2.html"><i class="fa fa-check"></i><b>2</b> Short introduction to ggplot2</a></li>
+<li class="chapter" data-level="3" data-path="chapter-treeio.html"><a href="chapter-treeio.html"><i class="fa fa-check"></i><b>3</b> Parsing phylogenetic trees with associated data: <em>treeio</em></a><ul>
+<li class="chapter" data-level="3.1" data-path="chapter-treeio.html"><a href="chapter-treeio.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="chapter-treeio.html"><a href="chapter-treeio.html#newick-tree-format"><i class="fa fa-check"></i><b>3.1.1</b> Newick tree format</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chapter-treeio.html"><a href="chapter-treeio.html#nexus-tree-format"><i class="fa fa-check"></i><b>3.1.2</b> NEXUS tree format</a></li>
+<li class="chapter" data-level="3.1.3" data-path="chapter-treeio.html"><a href="chapter-treeio.html#nhxtext"><i class="fa fa-check"></i><b>3.1.3</b> New Hampshire eXtended format</a></li>
+<li class="chapter" data-level="3.1.4" data-path="chapter-treeio.html"><a href="chapter-treeio.html#jplace-format"><i class="fa fa-check"></i><b>3.1.4</b> Jplace format</a></li>
+<li class="chapter" data-level="3.1.5" data-path="chapter-treeio.html"><a href="chapter-treeio.html#software-outputs"><i class="fa fa-check"></i><b>3.1.5</b> Software outputs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chapter-treeio.html"><a href="chapter-treeio.html#methods-and-materials"><i class="fa fa-check"></i><b>3.2</b> Methods and Materials</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-treeio.html"><a href="chapter-treeio.html#results"><i class="fa fa-check"></i><b>3.3</b> Results</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chapter-treeio.html"><a href="chapter-treeio.html#features-of-treeio"><i class="fa fa-check"></i><b>3.3.1</b> Features of <em>treeio</em></a></li>
+<li class="chapter" data-level="3.3.2" data-path="chapter-treeio.html"><a href="chapter-treeio.html#functions-demonstrated"><i class="fa fa-check"></i><b>3.3.2</b> Functions demonstrated</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chapter-treeio.html"><a href="chapter-treeio.html#cv"><i class="fa fa-check"></i><b>3.3.3</b> Data integration and comparison</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chapter-treeio.html"><a href="chapter-treeio.html#discussion"><i class="fa fa-check"></i><b>3.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html"><i class="fa fa-check"></i><b>4</b> Visualization and annotation of phylogenetic trees: <em>ggtree</em></a><ul>
+<li class="chapter" data-level="4.1" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#methods-and-materials-1"><i class="fa fa-check"></i><b>4.2</b> Methods and Materials</a></li>
+<li class="chapter" data-level="4.3" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#results-1"><i class="fa fa-check"></i><b>4.3</b> Results</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#features"><i class="fa fa-check"></i><b>4.3.1</b> Features</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#layouts-of-phylogenetic-tree"><i class="fa fa-check"></i><b>4.3.2</b> Layouts of phylogenetic tree</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#layer"><i class="fa fa-check"></i><b>4.3.3</b> Annotation layers</a></li>
+<li class="chapter" data-level="4.3.4" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#treeman"><i class="fa fa-check"></i><b>4.3.4</b> Tree manipulation</a></li>
+<li class="chapter" data-level="4.3.5" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#tree-annotation-using-data-from-evolutionary-analysis-software"><i class="fa fa-check"></i><b>4.3.5</b> Tree annotation using data from evolutionary analysis software</a></li>
+<li class="chapter" data-level="4.3.6" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#tree-annotation-based-on-tree-classes-defined-in-other-r-packages"><i class="fa fa-check"></i><b>4.3.6</b> Tree annotation based on tree classes defined in other R packages</a></li>
+<li class="chapter" data-level="4.3.7" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#advanced-annotation-on-the-phylogenetic-tree"><i class="fa fa-check"></i><b>4.3.7</b> Advanced annotation on the phylogenetic tree</a></li>
+<li class="chapter" data-level="4.3.8" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#performance-comparison-with-other-tree-related-packages"><i class="fa fa-check"></i><b>4.3.8</b> Performance comparison with other tree-related packages</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chapter-ggtree.html"><a href="chapter-ggtree.html#discussion-1"><i class="fa fa-check"></i><b>4.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter-ggimage.html"><a href="chapter-ggimage.html"><i class="fa fa-check"></i><b>5</b> Annotating phylogenetic tree with images</a><ul>
+<li class="chapter" data-level="5.1" data-path="chapter-ggimage.html"><a href="chapter-ggimage.html#annotate-tips"><i class="fa fa-check"></i><b>5.1</b> Annotate tips</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter-ggimage.html"><a href="chapter-ggimage.html#annotate-internal-nodes"><i class="fa fa-check"></i><b>5.2</b> Annotate internal nodes</a></li>
+<li class="chapter" data-level="5.3" data-path="chapter-ggimage.html"><a href="chapter-ggimage.html#use-image-as-background"><i class="fa fa-check"></i><b>5.3</b> Use image as background</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ggtree: Elegant Graphics for Phylogenetic Tree Visualization and Annotation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+
+
+<div id="refs" class="references">
+<div>
+<p>Berger, Simon A., Denis Krompass, and Alexandros Stamatakis. 2011. “Performance, Accuracy, and Web Server for Evolutionary Placement of Short Sequence Reads Under Maximum Likelihood.” <em>Systematic Biology</em>, March, syr010. doi:<a href="https://doi.org/10.1093/sysbio/syr010">10.1093/sysbio/syr010</a>.</p>
+</div>
+<div>
+<p>Bosi, Emanuele, Jonathan M. Monk, Ramy K. Aziz, Marco Fondi, Victor Nizet, and Bernhard Ø. Palsson. 2016. “Comparative Genome-Scale Modelling of Staphylococcus Aureus Strains Identifies Strain-Specific Metabolic Capabilities Linked to Pathogenicity.” <em>Proceedings of the National Academy of Sciences of the United States of America</em> 113 (26): E3801–E3809. doi:<a href="https://doi.org/10.1073/pnas.1523199113">10.1073/pnas.1523199113</a>.</p>
+</div>
+<div>
+<p>Bouckaert, Remco, Joseph Heled, Denise Kühnert, Tim Vaughan, Chieh-Hsi Wu, Dong Xie, Marc A. Suchard, Andrew Rambaut, and Alexei J. Drummond. 2014. “BEAST 2: A Software Platform for Bayesian Evolutionary Analysis.” <em>PLoS Comput Biol</em> 10 (4): e1003537. doi:<a href="https://doi.org/10.1371/journal.pcbi.1003537">10.1371/journal.pcbi.1003537</a>.</p>
+</div>
+<div>
+<p>Boussau, Bastien, Gergely J. Szöllősi, Laurent Duret, Manolo Gouy, Eric Tannier, and Vincent Daubin. 2013. “Genome-Scale Coestimation of Species and Gene Trees.” <em>Genome Research</em> 23 (2): 323–30. doi:<a href="https://doi.org/10.1101/gr.141978.112">10.1101/gr.141978.112</a>.</p>
+</div>
+<div>
+<p>Callahan, Benjamin J., Paul J. McMurdie, Michael J. Rosen, Andrew W. Han, Amy Jo A. Johnson, and Susan P. Holmes. 2016. “DADA2: High-Resolution Sample Inference from Illumina Amplicon Data.” <em>Nature Methods</em> 13 (7): 581–83. doi:<a href="https://doi.org/10.1038/nmeth.3869">10.1038/nmeth.3869</a>.</p>
+</div>
+<div>
+<p>Chevenet, François, Christine Brun, Anne-Laure Bañuls, Bernard Jacq, and Richard Christen. 2006. “TreeDyn: Towards Dynamic Graphics and Annotations for Analyses of Trees.” <em>BMC Bioinformatics</em> 7 (October): 439. doi:<a href="https://doi.org/10.1186/1471-2105-7-439">10.1186/1471-2105-7-439</a>.</p>
+</div>
+<div>
+<p>Edgar, Robert C. 2004. “MUSCLE: Multiple Sequence Alignment with High Accuracy and High Throughput.” <em>Nucleic Acids Research</em> 32 (5): 1792–7. doi:<a href="https://doi.org/10.1093/nar/gkh340">10.1093/nar/gkh340</a>.</p>
+</div>
+<div>
+<p>Felsenstein, Joseph. 1989. “PHYLIP - Phylogeny Inference Package (Version 3.2).” <em>Cladistics</em> 5: 164–66.</p>
+</div>
+<div>
+<p>Gentleman, Robert C, Vincent J Carey, Douglas M Bates, Ben Bolstad, Marcel Dettling, Sandrine Dudoit, Byron Ellis, et al. 2004. “Bioconductor: Open Software Development for Computational Biology and Bioinformatics.” <em>Genome Biology</em> 5 (10): R80. doi:<a href="https://doi.org/10.1186/gb-2004-5-10-r80">10.1186/gb-2004-5-10-r80</a>.</p>
+</div>
+<div>
+<p>Goldman, N., and Z. Yang. 1994. “A Codon-Based Model of Nucleotide Substitution for Protein-Coding DNA Sequences.” <em>Molecular Biology and Evolution</em> 11 (5): 725–36.</p>
+</div>
+<div>
+<p>Gupta, Ankit, and Vineet K Sharma. 2015. “Using the Taxon-Specific Genes for the Taxonomic Classification of Bacterial Genomes.” <em>BMC Genomics</em> 16 (1). doi:<a href="https://doi.org/10.1186/s12864-015-1542-0">10.1186/s12864-015-1542-0</a>.</p>
+</div>
+<div>
+<p>He, Ya-Qing, Long Chen, Wen-Bo Xu, Hong Yang, Han-Zhong Wang, Wen-Ping Zong, Hui-Xia Xian, et al. 2013. “Emergence, Circulation, and Spatiotemporal Phylogenetic Analysis of Coxsackievirus A6- and Coxsackievirus A10-Associated Hand, Foot, and Mouth Disease Infections from 2008 to 2012 in Shenzhen, China.” <em>Journal of Clinical Microbiology</em> 51 (11): 3560–6. doi:<a href="https://doi.org/10.1128/JCM.01231-13">10.1128/JCM.01231-13</a>.</p>
+</div>
+<div>
+<p>He, Zilong, Huangkai Zhang, Shenghan Gao, Martin J. Lercher, Wei-Hua Chen, and Songnian Hu. 2016. “Evolview V2: An Online Visualization and Management Tool for Customized and Annotated Phylogenetic Trees.” <em>Nucleic Acids Research</em> 44 (W1): W236–241. doi:<a href="https://doi.org/10.1093/nar/gkw370">10.1093/nar/gkw370</a>.</p>
+</div>
+<div>
+<p>Höhna, Sebastian, Michael J. Landis, Tracy A. Heath, Bastien Boussau, Nicolas Lartillot, Brian R. Moore, John P. Huelsenbeck, and Fredrik Ronquist. 2016. “RevBayes: Bayesian Phylogenetic Inference Using Graphical Models and an Interactive Model-Specification Language.” <em>Systematic Biology</em> 65 (4): 726–36. doi:<a href="https://doi.org/10.1093/sysbio/syw021">10.1093/sysbio/syw021</a>.</p>
+</div>
+<div>
+<p>Huelsenbeck, J. P., and F. Ronquist. 2001. “MRBAYES: Bayesian Inference of Phylogenetic Trees.” <em>Bioinformatics (Oxford, England)</em> 17 (8): 754–55.</p>
+</div>
+<div>
+<p>Huson, Daniel H., and Celine Scornavacca. 2012. “Dendroscope 3: An Interactive Tool for Rooted Phylogenetic Trees and Networks.” <em>Systematic Biology</em> 61 (6): 1061–7. doi:<a href="https://doi.org/10.1093/sysbio/sys062">10.1093/sysbio/sys062</a>.</p>
+</div>
+<div>
+<p>Jombart, Thibaut, David M. Aanensen, Marc Baguelin, Paul Birrell, Simon Cauchemez, Anton Camacho, Caroline Colijn, et al. 2014. “OutbreakTools: A New Platform for Disease Outbreak Analysis Using the R Software.” <em>Epidemics</em> 7 (June): 28–34. doi:<a href="https://doi.org/10.1016/j.epidem.2014.04.003">10.1016/j.epidem.2014.04.003</a>.</p>
+</div>
+<div>
+<p>Koelle, Katia, Sarah Cobey, Bryan Grenfell, and Mercedes Pascual. 2006. “Epochal Evolution Shapes the Phylodynamics of Interpandemic Influenza A (H3N2) in Humans.” <em>Science (New York, N.Y.)</em> 314 (5807): 1898–1903. doi:<a href="https://doi.org/10.1126/science.1132745">10.1126/science.1132745</a>.</p>
+</div>
+<div>
+<p>Kuczynski, Justin, Jesse Stombaugh, William Anton Walters, Antonio González, J. Gregory Caporaso, and Rob Knight. 2011. “Using QIIME to Analyze 16S rRNA Gene Sequences from Microbial Communities.” <em>Current Protocols in Bioinformatics / Editoral Board, Andreas D. Baxevanis ... [et Al.]</em> CHAPTER (December): Unit10.7. doi:<a href="https://doi.org/10.1002/0471250953.bi1007s36">10.1002/0471250953.bi1007s36</a>.</p>
+</div>
+<div>
+<p>Kunin, Victor, and Philip Hugenholtz. 2010. “PyroTagger : A Fast , Accurate Pipeline for Analysis of rRNA Amplicon Pyrosequence Data.” <em>The Open Journal</em>, 1–8. <a href="http://www.theopenjournal.org/toj_articles/1" class="uri">http://www.theopenjournal.org/toj_articles/1</a>.</p>
+</div>
+<div>
+<p>Lam, Tommy Tsan-Yuk, Chung-Chau Hon, and Julian W. Tang. 2010. “Use of Phylogenetics in the Molecular Epidemiology and Evolutionary Studies of Viral Infections.” <em>Critical Reviews in Clinical Laboratory Sciences</em> 47 (1): 5–49. doi:<a href="https://doi.org/10.3109/10408361003633318">10.3109/10408361003633318</a>.</p>
+</div>
+<div>
+<p>Lam, Tommy Tsan-Yuk, Chung-Chau Hon, Philippe Lemey, Oliver G. Pybus, Mang Shi, Hein Min Tun, Jun Li, Jingwei Jiang, Edward C. Holmes, and Frederick Chi-Ching Leung. 2012. “Phylodynamics of H5N1 Avian Influenza Virus in Indonesia.” <em>Molecular Ecology</em> 21 (12): 3062–77. doi:<a href="https://doi.org/10.1111/j.1365-294X.2012.05577.x">10.1111/j.1365-294X.2012.05577.x</a>.</p>
+</div>
+<div>
+<p>Lam, Tommy Tsan-Yuk, Boping Zhou, Jia Wang, Yujuan Chai, Yongyi Shen, Xinchun Chen, Chi Ma, et al. 2015. “Dissemination, Divergence and Establishment of H7N9 Influenza Viruses in China.” <em>Nature</em> 522 (7554): 102–5. doi:<a href="https://doi.org/10.1038/nature14348">10.1038/nature14348</a>.</p>
+</div>
+<div>
+<p>Letunic, Ivica, and Peer Bork. 2007. “Interactive Tree of Life (iTOL): An Online Tool for Phylogenetic Tree Display and Annotation.” <em>Bioinformatics</em> 23 (1): 127–28. doi:<a href="https://doi.org/10.1093/bioinformatics/btl529">10.1093/bioinformatics/btl529</a>.</p>
+</div>
+<div>
+<p>Liang, Huyi, Tommy Tsan-Yuk Lam, Xiaohui Fan, Xinchun Chen, Yu Zeng, Ji Zhou, Lian Duan, et al. 2014. “Expansion of Genotypic Diversity and Establishment of 2009 H1N1 Pandemic-Origin Internal Genes in Pigs in China.” <em>Journal of Virology</em>, July, JVI.01327–14. doi:<a href="https://doi.org/10.1128/JVI.01327-14">10.1128/JVI.01327-14</a>.</p>
+</div>
+<div>
+<p>Loverdo, Claude, and James O. Lloyd-Smith. 2013. “INTER-GENERATIONAL PHENOTYPIC MIXING IN VIRAL EVOLUTION.” <em>Evolution; International Journal of Organic Evolution</em> 67 (6): 1815–22. doi:<a href="https://doi.org/10.1111/evo.12048">10.1111/evo.12048</a>.</p>
+</div>
+<div>
+<p>Maddison, David R., David L. Swofford, Wayne P. Maddison, and David Cannatella. 1997. “Nexus: An Extensible File Format for Systematic Information.” <em>Systematic Biology</em> 46 (4): 590–621. doi:<a href="https://doi.org/10.1093/sysbio/46.4.590">10.1093/sysbio/46.4.590</a>.</p>
+</div>
+<div>
+<p>Matsen, Frederick A., Noah G. Hoffman, Aaron Gallagher, and Alexandros Stamatakis. 2012. “A Format for Phylogenetic Placements.” <em>PLOS ONE</em> 7 (2): e31009. doi:<a href="https://doi.org/10.1371/journal.pone.0031009">10.1371/journal.pone.0031009</a>.</p>
+</div>
+<div>
+<p>Matsen, Frederick A., Robin B. Kodner, and E Virginia Armbrust. 2010. “Pplacer: Linear Time Maximum-Likelihood and Bayesian Phylogenetic Placement of Sequences onto a Fixed Reference Tree.” <em>BMC Bioinformatics</em> 11: 538. doi:<a href="https://doi.org/10.1186/1471-2105-11-538">10.1186/1471-2105-11-538</a>.</p>
+</div>
+<div>
+<p>McMurdie, Paul J., and Susan Holmes. 2013. “Phyloseq: An R Package for Reproducible Interactive Analysis and Graphics of Microbiome Census Data.” <em>PloS One</em> 8 (4): e61217. doi:<a href="https://doi.org/10.1371/journal.pone.0061217">10.1371/journal.pone.0061217</a>.</p>
+</div>
+<div>
+<p>Neher, Richard A., Trevor Bedford, Rodney S. Daniels, Colin A. Russell, and Boris I. Shraiman. 2016. “Prediction, Dynamics, and Visualization of Antigenic Phenotypes of Seasonal Influenza Viruses.” <em>Proceedings of the National Academy of Sciences</em> 113 (12): E1701–E1709. doi:<a href="https://doi.org/10.1073/pnas.1525578113">10.1073/pnas.1525578113</a>.</p>
+</div>
+<div>
+<p>Page, Roderic D. M. 2002. “Visualizing Phylogenetic Trees Using TreeView.” <em>Current Protocols in Bioinformatics</em> Chapter 6 (August): Unit 6.2. doi:<a href="https://doi.org/10.1002/0471250953.bi0602s01">10.1002/0471250953.bi0602s01</a>.</p>
+</div>
+<div>
+<p>Paradis, Emmanuel, Julien Claude, and Korbinian Strimmer. 2004. “APE: Analyses of Phylogenetics and Evolution in R Language.” <em>Bioinformatics</em> 20 (2): 289–90. doi:<a href="https://doi.org/10.1093/bioinformatics/btg412">10.1093/bioinformatics/btg412</a>.</p>
+</div>
+<div>
+<p>Parrish, Colin R., Pablo R. Murcia, and Edward C. Holmes. 2015. “Influenza Virus Reservoirs and Intermediate Hosts: Dogs, Horses, and New Possibilities for Influenza Virus Exposure of Humans.” <em>Journal of Virology</em> 89 (6): 2990–4. doi:<a href="https://doi.org/10.1128/JVI.03146-14">10.1128/JVI.03146-14</a>.</p>
+</div>
+<div>
+<p>Pond, Sergei L. Kosakovsky, Simon D. W. Frost, and Spencer V. Muse. 2005. “HyPhy: Hypothesis Testing Using Phylogenies.” <em>Bioinformatics (Oxford, England)</em> 21 (5): 676–79. doi:<a href="https://doi.org/10.1093/bioinformatics/bti079">10.1093/bioinformatics/bti079</a>.</p>
+</div>
+<div>
+<p>R Core Team. 2016. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div>
+<p>Retief, J. D. 2000. “Phylogenetic Analysis Using PHYLIP.” <em>Methods in Molecular Biology (Clifton, N.J.)</em> 132: 243–58.</p>
+</div>
+<div>
+<p>Revell, Liam J. 2012. “Phytools: An R Package for Phylogenetic Comparative Biology (and Other Things).” <em>Methods in Ecology and Evolution</em> 3 (2): 217–23. doi:<a href="https://doi.org/10.1111/j.2041-210X.2011.00169.x">10.1111/j.2041-210X.2011.00169.x</a>.</p>
+</div>
+<div>
+<p>Sanderson, Michael J. 2003. “R8s: Inferring Absolute Rates of Molecular Evolution and Divergence Times in the Absence of a Molecular Clock.” <em>Bioinformatics</em> 19 (2): 301–2. doi:<a href="https://doi.org/10.1093/bioinformatics/19.2.301">10.1093/bioinformatics/19.2.301</a>.</p>
+</div>
+<div>
+<p>Schliep, Klaus Peter. 2011. “Phangorn: Phylogenetic Analysis in R.” <em>Bioinformatics</em> 27 (4): 592–93. doi:<a href="https://doi.org/10.1093/bioinformatics/btq706">10.1093/bioinformatics/btq706</a>.</p>
+</div>
+<div>
+<p>Schloss, Patrick D., Sarah L. Westcott, Thomas Ryabin, Justine R. Hall, Martin Hartmann, Emily B. Hollister, Ryan A. Lesniewski, et al. 2009. “Introducing Mothur: Open-Source, Platform-Independent, Community-Supported Software for Describing and Comparing Microbial Communities.” <em>Applied and Environmental Microbiology</em> 75 (23): 7537–41. doi:<a href="https://doi.org/10.1128/AEM.01541-09">10.1128/AEM.01541-09</a>.</p>
+</div>
+<div>
+<p>Schmidt, Heiko A., Korbinian Strimmer, Martin Vingron, and Arndt von Haeseler. 2002. “TREE-PUZZLE: Maximum Likelihood Phylogenetic Analysis Using Quartets and Parallel Computing.” <em>Bioinformatics (Oxford, England)</em> 18 (3): 502–4.</p>
+</div>
+<div>
+<p>Schön, Isa, Rylan Shearn, Koen Martens, Annette Koenders, and Stuart Halse. 2015. “Age and Origin of Australian Bennelongia (Crustacea, Ostracoda).” <em>Hydrobiologia</em> 750 (1): 125–46. doi:<a href="https://doi.org/10.1007/s10750-014-2159-z">10.1007/s10750-014-2159-z</a>.</p>
+</div>
+<div>
+<p>Stamatakis, Alexandros. 2014. “RAxML Version 8: A Tool for Phylogenetic Analysis and Post-Analysis of Large Phylogenies.” <em>Bioinformatics</em> 30 (9): 1312–3. doi:<a href="https://doi.org/10.1093/bioinformatics/btu033">10.1093/bioinformatics/btu033</a>.</p>
+</div>
+<div>
+<p>Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer. <a href="http://ggplot2.org" class="uri">http://ggplot2.org</a>.</p>
+</div>
+<div>
+<p>Wilgenbusch, James C., and David Swofford. 2003. “Inferring Evolutionary Trees with PAUP*.” <em>Current Protocols in Bioinformatics</em> Chapter 6 (February): Unit 6.4. doi:<a href="https://doi.org/10.1002/0471250953.bi0604s00">10.1002/0471250953.bi0604s00</a>.</p>
+</div>
+<div>
+<p>Wilkinson, Leland, D. Wills, D. Rope, A. Norton, and R. Dubbs. 2005. <em>The Grammar of Graphics</em>. 2nd edition. New York: Springer.</p>
+</div>
+<div>
+<p>Yang, Ziheng. 2007. “PAML 4: Phylogenetic Analysis by Maximum Likelihood.” <em>Molecular Biology and Evolution</em> 24 (8): 1586–91. doi:<a href="https://doi.org/10.1093/molbev/msm088">10.1093/molbev/msm088</a>.</p>
+</div>
+<div>
+<p>Yin, Tengfei, Dianne Cook, and Michael Lawrence. 2012. “Ggbio: An R Package for Extending the Grammar of Graphics for Genomic Data.” <em>Genome Biology</em> 13 (8): R77. doi:<a href="https://doi.org/10.1186/gb-2012-13-8-r77">10.1186/gb-2012-13-8-r77</a>.</p>
+</div>
+<div>
+<p>Zmasek, Christian M., and Sean R. Eddy. 2001. “ATV: Display and Manipulation of Annotated Phylogenetic Trees.” <em>Bioinformatics</em> 17 (4): 383–84. doi:<a href="https://doi.org/10.1093/bioinformatics/17.4.383">10.1093/bioinformatics/17.4.383</a>.</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter-ggimage.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

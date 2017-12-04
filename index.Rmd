@@ -54,7 +54,7 @@ options(width=60)
   
 if (knitr:::is_html_output()) {
   options(knitr.table.format = "html") 
-  knitr::opts_chunk$set(cache=FALSE) 
+  knitr::opts_chunk$set(cache=TRUE) 
 } else if (knitr:::is_latex_output()) {
   options(knitr.table.format = "latex")
   knitr::opts_chunk$set(fig.pos = '!h')

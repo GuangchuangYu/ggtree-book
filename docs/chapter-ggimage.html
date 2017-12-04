@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="short-introduction-to-ggplot2.html">
+<link rel="prev" href="chapter-ggtree.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -154,22 +154,62 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">ggtree: Elegant Graphics for Phylogenetic Tree Visualization and Annotation</h1>
-<h4 class="author"><em>Guangchuang Yu</em></h4>
+<div id="chapter-ggimage" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Annotating phylogenetic tree with images</h1>
+<div id="annotate-tips" class="section level2">
+<h2><span class="header-section-number">5.1</span> Annotate tips</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggimage)
+<span class="kw">library</span>(ggtree)
+url &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;https://raw.githubusercontent.com/TreeViz/&quot;</span>,
+            <span class="st">&quot;metastyle/master/design/viz_targets_exercise/&quot;</span>) 
+x &lt;-<span class="st"> </span><span class="kw">read.tree</span>(<span class="kw">paste0</span>(url, <span class="st">&quot;tree_boots.nwk&quot;</span>))
+info &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste0</span>(url, <span class="st">&quot;tip_data.csv&quot;</span>))
+p &lt;-<span class="st"> </span><span class="kw">ggtree</span>(x) <span class="op">%&lt;+%</span><span class="st"> </span>info <span class="op">+</span><span class="st"> </span><span class="kw">xlim</span>(<span class="ot">NA</span>, <span class="dv">6</span>)
+p <span class="op">+</span><span class="st"> </span><span class="kw">geom_tiplab</span>(<span class="kw">aes</span>(<span class="dt">image=</span> imageURL), <span class="dt">geom=</span><span class="st">&quot;image&quot;</span>, <span class="dt">offset=</span><span class="dv">2</span>, <span class="dt">align=</span>T, <span class="dt">size=</span>.<span class="dv">16</span>, <span class="dt">hjust=</span><span class="dv">0</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_tiplab</span>(<span class="dt">geom=</span><span class="st">&quot;label&quot;</span>, <span class="dt">offset=</span><span class="dv">1</span>, <span class="dt">hjust=</span>.<span class="dv">5</span>)</code></pre></div>
+<p><img src="ggtree-book_files/figure-html/unnamed-chunk-42-1.png" width="729.6" /></p>
 </div>
-<div id="short-introduction-to-r" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Short introduction to R</h1>
-<p>say hello to R</p>
+<div id="annotate-internal-nodes" class="section level2">
+<h2><span class="header-section-number">5.2</span> Annotate internal nodes</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## example from https://rgriff23.github.io/2017/05/11/primate-phylogeny-ggtree.html
+<span class="kw">library</span>(ape)
+tree &lt;-<span class="st"> </span><span class="kw">read.nexus</span>(<span class="st">&quot;https://raw.githubusercontent.com/rgriff23/Dissertation/master/Chapter_2/data/tree.nex&quot;</span>)
+phylopic_info &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">node =</span> <span class="kw">c</span>(<span class="dv">124</span>, <span class="dv">113</span>, <span class="dv">110</span>, <span class="dv">96</span>, <span class="dv">89</span>, <span class="dv">70</span>),
+                            <span class="dt">phylopic =</span> <span class="kw">c</span>(<span class="st">&quot;7fb9bea8-e758-4986-afb2-95a2c3bf983d&quot;</span>,
+                                        <span class="st">&quot;bac25f49-97a4-4aec-beb6-f542158ebd23&quot;</span>,
+                                        <span class="st">&quot;f598fb39-facf-43ea-a576-1861304b2fe4&quot;</span>,
+                                        <span class="st">&quot;aceb287d-84cf-46f1-868c-4797c4ac54a8&quot;</span>,
+                                        <span class="st">&quot;0174801d-15a6-4668-bfe0-4c421fbe51e8&quot;</span>,
+                                        <span class="st">&quot;72f2f854-f3cd-4666-887c-35d5c256ab0f&quot;</span>),
+                            <span class="dt">species =</span> <span class="kw">c</span>(<span class="st">&quot;galagoids&quot;</span>, <span class="st">&quot;lemurs&quot;</span>, <span class="st">&quot;tarsiers&quot;</span>,
+                                        <span class="st">&quot;cebids&quot;</span>, <span class="st">&quot;hominoids&quot;</span>, <span class="st">&quot;cercopithecoids&quot;</span>))
+pg &lt;-<span class="st"> </span><span class="kw">ggtree</span>(tree)                                      
+pg <span class="op">%&lt;+%</span><span class="st"> </span>phylopic_info <span class="op">+</span><span class="st"> </span><span class="kw">geom_nodelab</span>(<span class="kw">aes</span>(<span class="dt">image=</span>phylopic), <span class="dt">geom=</span><span class="st">&quot;phylopic&quot;</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>, <span class="dt">color=</span><span class="st">&#39;steelblue&#39;</span>)</code></pre></div>
+<p><img src="ggtree-book_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">node =</span> <span class="kw">c</span>(<span class="st">&quot;70&quot;</span>,<span class="st">&quot;89&quot;</span>,<span class="st">&quot;96&quot;</span>,<span class="st">&quot;110&quot;</span>,<span class="st">&quot;113&quot;</span>,<span class="st">&quot;124&quot;</span>),
+                <span class="dt">images =</span> <span class="kw">c</span>(<span class="st">&quot;https://i.imgur.com/8VA9cYw.png&quot;</span>,
+                            <span class="st">&quot;https://i.imgur.com/XYM1T2x.png&quot;</span>,
+                            <span class="st">&quot;https://i.imgur.com/EQs5ZZe.png&quot;</span>,
+                            <span class="st">&quot;https://i.imgur.com/2xin0UK.png&quot;</span>,
+                            <span class="st">&quot;https://i.imgur.com/hbftayl.png&quot;</span>,
+                            <span class="st">&quot;https://i.imgur.com/3wDHW8n.png&quot;</span>))
+pg <span class="op">%&lt;+%</span><span class="st"> </span>d <span class="op">+</span><span class="st"> </span><span class="kw">geom_nodelab</span>(<span class="kw">aes</span>(<span class="dt">image=</span>images), <span class="dt">geom=</span><span class="st">&quot;image&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.5</span>)                                        </code></pre></div>
+<p><img src="ggtree-book_files/figure-html/unnamed-chunk-43-2.png" width="672" /></p>
+</div>
+<div id="use-image-as-background" class="section level2">
+<h2><span class="header-section-number">5.3</span> Use image as background</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pg <span class="op">+</span><span class="st"> </span><span class="kw">geom_phylopic</span>(<span class="dt">image=</span><span class="st">&quot;79ad5f09-cf21-4c89-8e7d-0c82a00ce728&quot;</span>, <span class="dt">size=</span><span class="ot">Inf</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>, <span class="dt">color=</span><span class="st">&#39;firebrick&#39;</span>)</code></pre></div>
+<p><img src="ggtree-book_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="short-introduction-to-ggplot2.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chapter-ggtree.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
