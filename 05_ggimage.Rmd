@@ -41,7 +41,7 @@ d <- data.frame(node = c("70","89","96","110","113","124"),
          		   		 	"https://i.imgur.com/2xin0UK.png",
            					"https://i.imgur.com/hbftayl.png",
             				"https://i.imgur.com/3wDHW8n.png"))
-pg %<+% d + geom_nodelab(aes(image=images), geom="image", alpha=0.5)            				            
+pg %<+% d + geom_nodelab(aes(image=images), geom="image")            				            
 ```
 
 ## Use image as background
