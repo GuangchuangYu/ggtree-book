@@ -642,7 +642,7 @@ This example introduces annotating a tree with various sources of data (*e.g.*, 
 \setstretch{1.2}
 ```{r eval=FALSE}
 ## use the following command to get the data from Holt Lab
-## git clong https://github.com/katholt/plotTree.git
+## git clone https://github.com/katholt/plotTree.git
 
 setwd("plotTree/tree_example_april2015/")
 
